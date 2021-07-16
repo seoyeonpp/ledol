@@ -1,0 +1,58 @@
+<svg id="magnifying" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 483.19 490.09">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #e5771a;
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-5 {
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 7px;
+      }
+
+      .cls-3 {
+        fill: #ffbb29;
+      }
+
+      .cls-4 {
+        fill: #fc9d01;
+      }
+
+      .cls-5 {
+        fill: #cf3823;
+      }
+
+      .cls-6 {
+        clip-path: url(#clip-path);
+      }
+    </style>
+    <clipPath id="clip-path" transform="translate(16.02 52.93)">
+      <path class="cls-1" d="M118.25-.5A116.5,116.5,0,1,0,234.75,116,116.5,116.5,0,0,0,118.25-.5Zm0,209.7a93.2,93.2,0,1,1,93.2-93.2A93.2,93.2,0,0,1,118.25,209.2Z"/>
+    </clipPath>
+  </defs>
+  <g id="handle">
+    <path class="cls-2" d="M293.5,198.25c-9.51-2-37.54-.31-46.91,1.23s-9.08-2.95-9.4,3.32,2.08,11.09,2,22.13,4.81,34.73,5.37,41.71,22.27,14.78,32.21,13.71S293.5,198.25,293.5,198.25Z" transform="translate(16.02 52.93)"/>
+    <image width="512" height="1024" transform="translate(244.52 319.06) rotate(-45) scale(0.12)" xlink:href="magnifying_withHands1.png"/>
+    <image width="512" height="1024" transform="matrix(0.09, -0.09, 0.08, 0.08, 185.52, 260.06)" xlink:href="magnifying_withHands2.png"/>
+    <polygon class="cls-1" points="287.69 278.36 287.53 278.52 230.69 221.36 191.19 261.08 271.55 341.89 271.7 341.73 328.55 398.89 368.04 359.17 287.69 278.36"/>
+  </g>
+  <g id="glass">
+    <circle cx="134.56" cy="169.51" r="93.78"/>
+  </g>
+  <g id="legohand">
+    <path class="cls-3" d="M243.4,297c17.6-2.25,59.37-25.48,59.37-25.48l-9-70.42s-34.08,13.3-51.69,15.55l-44,5.62L207.62,297Z" transform="translate(16.02 52.93)"/>
+    <path class="cls-4" d="M293.26,242.43c-3.66-19.5,3.41-24.87,3.41-24.87l7.83-.37s-2.47,7.44,1.19,26.95l3.66,19.5S296.92,261.93,293.26,242.43Z" transform="translate(16.02 52.93)"/>
+    <path class="cls-5" d="M375,234.39,360.74,196s-17.5,6.21-44.62,13.43-9.94,17.17-8.67,32.95,3.41,23.63,15.71,26.16,81.15,10.33,108.27,3.1c0,0,29.65-19.51,32.18-31.8s-72.2-85.67-76.49-80-29.06,32.6-24.18,40S375,234.39,375,234.39Z" transform="translate(16.02 52.93)"/>
+  </g>
+  <g id="glasscover">
+    <g class="cls-6">
+      <image width="640" height="1136" transform="scale(0.43)" xlink:href="magnifying_withHands3.png"/>
+    </g>
+  </g>
+</svg>

@@ -5,9 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LEDOL'S TRIP</title>
+    <!-- style -->
     <link rel="shortcut icon" href="image/favicon.ico">
     <link rel="stylesheet" href="css/style.css">
+    
+    <!-- script -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
     <script src="js/script.js"></script>
 </head>
 <body>
@@ -19,6 +23,10 @@
             <section class="home">
                 <h1>Follow Ledol.</h1>
                 <img src="image/jump.png" alt="점프하는 레고">
+                <svg viewBox="0 0 42.5 42.5">
+                    <path d="M21 3C14.4 3 9 8.4 9 15v10c0 6.6 5.4 13 12 13s12-6.4 12-13V15c0-6.6-5.4-12-12-12zm10 21.5C31 30.4 26.5 36 21 36s-10-5.6-10-11.5v-8.9C11 9.8 15.5 5 21 5s10 4.8 10 10.6v8.9z" id="Rounded_Rectangle_1_copy" class="outline"></path>
+                    <circle cx="21" cy="15" r="2" id="Ellipse_1" class="st0"></circle>
+                </svg>
             </section>
             <section class="scrolling">
                 <h2>먼저, 레돌이를 조립해볼까요?</h2>
@@ -29,6 +37,35 @@
             </section>
             <section class="intro">
                 <h2>앞으로의 여행을 함께 할 레돌이를 소개해드릴게요.</h2>
+                <div class="contents_wrap">
+                    <img src="image/thumnail.gif" alt="레고 썸네일">
+                    <div class="text_area">
+                        <p>이름 : 박레돌</p>
+                        <p>혈액형 : B형</p>
+                        <p>
+                            MBTI : INFP
+                            <button class="show_pop">INFP의 특징이 궁금하신가요? 클릭!</button>
+                        </p>
+                        <div class="dim_layer">
+                            <div class="dim_bg"></div>
+                            <div class="pop_up">
+                                <h4>INFP 한줄요약</h4>
+                                <p>
+                                    🧩 뛰어난 공감능력<br>
+                                    🧩 분위기를 잘 탐<br>
+                                    🧩 나만의 신념, 가치관이 있음<br>
+                                    🧩 내향적이지만 관심받는것을 좋아함<br>
+                                    🧩 호기심이 많음<br>
+                                    🧩 이상주의자<br>
+                                    🧩 창의적임<br>
+                                </p>
+                                <button>Close</button>
+                            </div>
+                        </div>
+                        <p>취미 : 세계 여행</p>
+                        <p>꿈이 많은 레돌이는 뭐든지 도전하고 싶어해요!</p>
+                    </div>
+                </div>
             </section>
             <section class="cloth_change">
                 <h2>잠깐! 여행을 가는데 기분을 내야죠! 레돌이에게 어울리는 옷을 찾아주세요.</h2>
@@ -115,16 +152,7 @@
                             </g>
                         </g>
                     </svg>
-                    <div class="color_zone">
-                        <button class="pink">분홍</button>
-                        <button class="red">빨강</button>
-                        <button class="sky">하늘</button>
-                        <button class="purple">보라</button>
-                        <button class="blue">파랑</button>
-                        <button class="yellowGreen">연두</button>
-                        <button class="yellow">노랑</button>
-                        <button class="orange">주황</button>
-                    </div>
+                    <div id="picker" class="color_zone"></div>
                 </div>
             </section>
             <section class="pick_country">

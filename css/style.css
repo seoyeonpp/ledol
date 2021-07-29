@@ -66,10 +66,56 @@ a {
   font-style: normal;
 }
 
+@-webkit-keyframes circleMove {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  20% {
+    -webkit-transform: translateY(9px);
+            transform: translateY(9px);
+  }
+  30% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(9px);
+            transform: translateY(9px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes circleMove {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  20% {
+    -webkit-transform: translateY(9px);
+            transform: translateY(9px);
+  }
+  30% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(9px);
+            transform: translateY(9px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
 #loading {
   position: absolute;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: rgba(255, 207, 0, 0.5);
   display: block;
 }
@@ -106,13 +152,16 @@ a {
 
 #wrap main section.home h1 {
   font-family: "Tourney";
-  font-size: 72px;
+  font-size: 86px;
   color: #333333;
   position: absolute;
   top: 40%;
-  left: 30%;
+  left: -300px;
+  opacity: 0;
   -webkit-transform: translate(-30%, -40%);
           transform: translate(-30%, -40%);
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
 }
 
 #wrap main section.home img {
@@ -124,31 +173,217 @@ a {
           transform: translate(-70%, -40%);
 }
 
-#wrap main section.scrolling {
-  position: relative;
-  height: 400vh;
-}
-
-#wrap main section.scrolling img {
-  position: -webkit-sticky;
-  position: sticky;
-  left: 50%;
+#wrap main section.home svg {
+  width: 50px;
+  height: 50px;
+  margin-left: 50%;
+  margin-top: 80vh;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   opacity: 0;
-  margin-bottom: -300px;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+#wrap main section.home svg .outline {
+  fill: rgba(0, 0, 0, 0.5);
+}
+
+#wrap main section.home svg circle {
+  fill: #333333;
+  -webkit-animation: circleMove 2s infinite;
+          animation: circleMove 2s infinite;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+
+#wrap main section.scrolling {
+  position: relative;
+  height: 500vh;
+  background: url(../image/bg.png) 40% 50% repeat fixed;
+  background-size: cover;
+}
+
+#wrap main section.scrolling img {
+  position: fixed;
+  left: 0;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 #wrap main section.scrolling img.head {
+  opacity: 0;
   top: 100px;
+  height: 166px;
 }
 
 #wrap main section.scrolling img.upper_body {
+  opacity: 0;
   top: 263px;
+  height: 257px;
 }
 
 #wrap main section.scrolling img.lower_body {
+  opacity: 0;
   top: 448px;
+  height: 235px;
+}
+
+#wrap main section.scrolling p {
+  font-family: "Tourney";
+  font-size: 100px;
+  color: #FFCF00;
+  display: inline-block;
+  padding: 10px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  left: 50%;
+  bottom: 600px;
+  -webkit-transform: translateX(-50%) translateY(100px);
+          transform: translateX(-50%) translateY(100px);
+  z-index: 10;
+  opacity: 0;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+#wrap main section.scrolling p.on {
+  -webkit-transform: translateX(-50%) translateY(0px);
+          transform: translateX(-50%) translateY(0px);
+  opacity: 1;
+}
+
+#wrap main section.intro .contents_wrap {
+  background: #015DB9;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 400px;
+  width: 0;
+}
+
+#wrap main section.intro .contents_wrap img {
+  margin-right: 80px;
+  opacity: 0;
+  -webkit-transform: translateX(-100px);
+          transform: translateX(-100px);
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+#wrap main section.intro .contents_wrap p {
+  color: #ffffff;
+  opacity: 0;
+  -webkit-transform: translateX(-100px);
+          transform: translateX(-100px);
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+#wrap main section.intro .contents_wrap p button {
+  background: #FFCF00;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  cursor: pointer;
+  border: 0;
+  font-family: "GmarketSansBold";
+  font-size: 16px;
+  color: #333333;
+  padding: 5px;
+  border-radius: 10px;
+  vertical-align: middle;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#wrap main section.intro .contents_wrap p button:hover {
+  -webkit-box-shadow: 0 20px 5px -10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 20px 5px -10px rgba(0, 0, 0, 0.2);
+  -webkit-transform: translateY(-10px);
+          transform: translateY(-10px);
+}
+
+#wrap main section.intro .contents_wrap .dim_layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  display: none;
+}
+
+#wrap main section.intro .contents_wrap .dim_layer .dim_bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#wrap main section.intro .contents_wrap .dim_layer .pop_up {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 560px;
+  height: 300px;
+  background: #ffffff;
+  z-index: 1000;
+  padding: 20px 60px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 30px;
+}
+
+#wrap main section.intro .contents_wrap .dim_layer .pop_up h4 {
+  font-family: "GmarketSansBold";
+  font-size: 28px;
+  color: #333333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#wrap main section.intro .contents_wrap .dim_layer .pop_up p {
+  font-family: "GmarketSansBold";
+  font-size: 16px;
+  color: #333333;
+}
+
+#wrap main section.intro .contents_wrap .dim_layer .pop_up button {
+  position: absolute;
+  top: 23px;
+  left: 450px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  cursor: pointer;
+  background: #006DB7;
+  border: 0;
+  border-radius: 14px;
+  width: 90px;
+  height: 40px;
+  font-family: "Tourney";
+  font-size: 18px;
+  color: #ffffff;
+}
+
+#wrap main section.intro .contents_wrap .dim_layer .pop_up button:hover {
+  background: #FFCF00;
 }
 
 #wrap main section.cloth_change .cloth_color_wrap {
@@ -161,22 +396,32 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-top: 80px;
 }
 
-#wrap main section.cloth_change .cloth_color_wrap .color_zone button {
-  cursor: pointer;
-  outline: 0;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  border: 0;
+#wrap main section.cloth_change .cloth_color_wrap #lego_cloth {
+  opacity: 0;
+  -webkit-transform: translateY(100px);
+          transform: translateY(100px);
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+#wrap main section.cloth_change .cloth_color_wrap .color_zone {
+  margin-left: 70px;
+  opacity: 0;
+  -webkit-transform: translateY(100px);
+          transform: translateY(100px);
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 
 #wrap main section h2 {
   font-family: "GmarketSansBold";
-  font-size: 32px;
+  font-size: 36px;
   color: #333333;
   text-align: center;
+  padding: 90px 0;
 }
 
 #wrap main section p {

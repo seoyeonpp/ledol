@@ -12,6 +12,7 @@ $(function () {
             lego.textAni();
             lego.colorChange();
             lego.showPop();
+            lego.pinBtn();
         },
         pageLoading: function () {
             setTimeout(function () {
@@ -37,9 +38,20 @@ $(function () {
                 color: "#f00",
             });
             //레고 머리,상체,하체 색상 변경
+            console.log($('#lego g'));
+            $('#lego g').on('click', function () {
+                $(this).addClass('change').siblings().removeClass('change');
+            });
             colorPicker.on(['color:init', 'color:change'], function (color) {
-                $('.cls-4').css({ 'fill': color.hexString });
-                $('.cls-3').css({ 'fill': color.hexString });
+                if ($('#head').hasClass('change')) {
+                    $('.cls-1').css({ 'fill': color.hexString });
+                } else if ($('#upperbody').hasClass('change')) {
+                    $('.cls-4').css({ 'fill': color.hexString });
+                    $('.cls-3').css({ 'fill': color.hexString });
+                } else if ($('#lowerbody').hasClass('change')) {
+                    $('.cls-5').css({ 'fill': color.hexString });
+
+                };
             });
 
         },
@@ -58,10 +70,33 @@ $(function () {
             $('#wrap').css({ 'position': 'fixed', 'top': -$(window).scrollTop(), 'left': 0, 'width': '100%' });
         },
         scrollEnable: function () {
-            var scrollPosition = Math.abs($('#wrap').css('top').split('px')[0]);
+            const scrollPosition = Math.abs($('#wrap').css('top').split('px')[0]);
             $('#wrap').removeAttr('style').attr('style', 'display: block;');
             $(window).scrollTop(scrollPosition);
             $('body').removeAttr('style');
+        },
+        pinBtn: function () {
+            $('.pin_zone button').on('click', function () {
+                const thisIndex = $(this).index(),
+                    topArr = [703, 550, 714, 588, 510, 556, 538, 674, 729],
+                    rightArr = [507, 480, 463, 307, 950, 920, 970, 403, 393];
+                console.log(thisIndex);
+
+                $('.hero').fadeOut();
+                if (thisIndex == 3 || thisIndex == 7) {
+                    $('.ship').fadeIn().animate({ 'top': topArr[thisIndex] + 'px', 'right': rightArr[thisIndex] + 'px' }, 2000);
+                } else {
+                    $('.plane').fadeIn().animate({ 'top': topArr[thisIndex] + 'px', 'right': rightArr[thisIndex] + 'px' }, 2000);
+                };
+                setTimeout(() => {
+                    $('.info_zone div').eq(thisIndex).addClass('show').siblings().removeClass('show');
+                }, 2000);
+            });
+            $('.info_zone div button').on('click', function () {
+                $('.ship').fadeOut();
+                $('.plane').fadeOut();
+                $('.info_zone div').removeClass('show');
+            });
         },
     };
     lego.init();
@@ -82,6 +117,7 @@ $(function () {
                 scrollEv.putTogether();
                 scrollEv.introduce();
                 scrollEv.clothArea();
+                scrollEv.map();
             },
             putTogether: function () {
                 if (this.wT < 1500) {
@@ -123,11 +159,22 @@ $(function () {
                 if (this.wT > $('.cloth_change').offset().top - 500) {
                     setTimeout(() => {
                         $('.cloth_color_wrap > svg').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
+                        $('.cloth_color_wrap .click').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
                     }, 300)
                     setTimeout(() => {
                         $('.cloth_color_wrap > .color_zone').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
                     }, 800)
                 }
+            },
+            map: function () {
+                // console.log($('.pick_country').offset().top); //8401.5625
+                if (this.wT > $('.pick_country').offset().top - 100) {
+                    $('.pick_country .map img').css({ 'transform': 'translateZ(-20px) translate(0px, 60px)' });
+                    setTimeout(() => {
+                        $('.hero').fadeIn();
+                        $('.pin_zone').fadeIn();
+                    }, 4500)
+                };
             },
         };
         scrollEv.init();

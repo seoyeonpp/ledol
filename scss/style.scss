@@ -9,6 +9,7 @@ $blue :  #006DB7;
 $yellow : #FFCF00;
 $red : #E2000D;
 $white: #ffffff;
+$green : #028640;
 
 // **mixin
 @mixin font ($family, $size, $color) {
@@ -33,6 +34,14 @@ $white: #ffffff;
     }
     100% {
         transform: translateY(0);
+    }
+}
+@keyframes clickAni {
+    from{
+        transform: translateX(-10px);
+    }
+    to{
+        transform: translateX(0px);
     }
 }
 
@@ -72,8 +81,8 @@ $white: #ffffff;
                     @include font("Tourney",86px,$black);
                     position: absolute;
                     top: 40%;
-                    left: -300px; //-300px에서 30%로
-                    opacity: 0; //opacity: 1로
+                    left: -300px;
+                    opacity: 0;
                     transform: translate(-30%, -40%);
                     transition: all 1s ease;
                 }
@@ -191,9 +200,6 @@ $white: #ffffff;
                         height: 100%;
                         z-index: 100;
                         display: none;
-                        // &.pop{
-                        //     display: block;
-                        // }
                         .dim_bg{
                             position: absolute;
                             top: 0;
@@ -249,10 +255,32 @@ $white: #ffffff;
                     justify-content: center;
                     align-items: center;
                     margin-top: 80px;
+                    .click{
+                        display: flex;
+                        flex-direction: column;
+                        opacity: 0;
+                        transform: translateY(100px);
+                        transition: all 1s;
+                        span{
+                            display: block;
+                            @include font('GmarketSansBold',16px,$black);
+                            margin: 60px 10px;
+                            animation: clickAni 0.5s infinite alternate ease-in;
+                        }
+                    }
                     #lego_cloth{
                         opacity: 0;
                         transform: translateY(100px);
                         transition: all 1s;
+                        #head{
+                            cursor: pointer;
+                        }
+                        #upperbody{
+                            cursor: pointer;
+                        }
+                        #lowerbody{
+                            cursor: pointer;
+                        }
                     }
                     .color_zone{
                         margin-left: 70px;
@@ -261,6 +289,127 @@ $white: #ffffff;
                         transition: all 1s;
                     }
                 }
+            }
+            &.pick_country{
+                overflow: hidden;
+                position: relative;
+                p{
+                    font-size: 36px;
+                    position: relative;
+                    z-index: 5;
+                    padding: 30px 0 0 30px;
+                }
+                .map{
+                    perspective: 200px;
+                    img{
+                        transform: translateZ(160px) translate(-620px,-440px);
+                        transition: all 5s;
+                    }
+                }
+                img{
+                    position: absolute;
+                    &.hero{
+                        top: 520px;
+                        right: 340px;
+                        width: 110px;
+                        display: none;
+                        z-index: 20;
+                    }
+                    &.plane{
+                        top: 520px;
+                        right: 340px;
+                        width: 110px;
+                        display: none;
+                        z-index: 20;
+                    }
+                    &.ship{
+                        top: 520px;
+                        right: 340px;
+                        width: 110px;
+                        display: none;
+                        z-index: 20;
+                    }
+                }
+                .pin_zone{
+                    display: none;
+                    button{
+                        cursor: pointer;
+                        position: absolute;
+                        z-index: 10;
+                        width: 40px;
+                        height: 40px;
+                        appearance: none;
+                        outline: none;
+                        border: 0;
+                        background-color: transparent;
+                        text-indent: -999999px;
+                        background-image: url(../image/pin.png);
+                        background-repeat: no-repeat;
+                        background-position: 50% 50%;
+                        background-size: contain;
+                        transform: translateY(0px);
+                        transition: all 150ms ease-out;
+                        &:hover{
+                            transform: translateY(-5px);
+                            transition: all 100ms ease-in;
+                        }
+                        &:nth-child(1){
+                            top: 703px;
+                            right: 507px;
+                        }
+                        &:nth-child(2){
+                            top: 550px;
+                            right: 480px;
+                        }
+                        &:nth-child(3){
+                            top: 714px;
+                            right: 463px;
+                        }
+                        &:nth-child(4){
+                            top: 588px;
+                            right: 307px;
+                        }
+                        &:nth-child(5){
+                            top: 510px;
+                            right: 950px;
+                        }
+                        &:nth-child(6){
+                            top: 556px;
+                            right: 920px;
+                        }
+                        &:nth-child(7){
+                            top: 538px;
+                            right: 970px;
+                        }
+                        &:nth-child(8){
+                            top: 674px;
+                            right: 403px;
+                        }
+                        &:nth-child(9){
+                            top: 729px;
+                            right: 393px;
+                        }
+                    }
+                }
+                .info_zone{
+                    div{
+                        width: 500px;
+                        height: 400px;
+                        background: $white;
+                        box-shadow: 0 10px 30px rgba(51, 51, 51, 0.4);
+                        border: 10px solid $deep-blue;
+                        position: absolute;
+                        left: 50%;
+                        top: 50%;
+                        transform: translate(-50%, -50%);
+                        z-index: 30;
+                        display: none;
+                        &.show{
+                            display: block;
+                        }
+                    }
+                }
+
             }
             h2{
                 @include font('GmarketSansBold',36px,$black);

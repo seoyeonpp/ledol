@@ -112,6 +112,28 @@ a {
   }
 }
 
+@-webkit-keyframes clickAni {
+  from {
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+  }
+  to {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+}
+
+@keyframes clickAni {
+  from {
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+  }
+  to {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+}
+
 #loading {
   position: absolute;
   width: 100%;
@@ -399,12 +421,49 @@ a {
   margin-top: 80px;
 }
 
+#wrap main section.cloth_change .cloth_color_wrap .click {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  opacity: 0;
+  -webkit-transform: translateY(100px);
+          transform: translateY(100px);
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+#wrap main section.cloth_change .cloth_color_wrap .click span {
+  display: block;
+  font-family: "GmarketSansBold";
+  font-size: 16px;
+  color: #333333;
+  margin: 60px 10px;
+  -webkit-animation: clickAni 0.5s infinite alternate ease-in;
+          animation: clickAni 0.5s infinite alternate ease-in;
+}
+
 #wrap main section.cloth_change .cloth_color_wrap #lego_cloth {
   opacity: 0;
   -webkit-transform: translateY(100px);
           transform: translateY(100px);
   -webkit-transition: all 1s;
   transition: all 1s;
+}
+
+#wrap main section.cloth_change .cloth_color_wrap #lego_cloth #head {
+  cursor: pointer;
+}
+
+#wrap main section.cloth_change .cloth_color_wrap #lego_cloth #upperbody {
+  cursor: pointer;
+}
+
+#wrap main section.cloth_change .cloth_color_wrap #lego_cloth #lowerbody {
+  cursor: pointer;
 }
 
 #wrap main section.cloth_change .cloth_color_wrap .color_zone {
@@ -414,6 +473,157 @@ a {
           transform: translateY(100px);
   -webkit-transition: all 1s;
   transition: all 1s;
+}
+
+#wrap main section.pick_country {
+  overflow: hidden;
+  position: relative;
+}
+
+#wrap main section.pick_country p {
+  font-size: 36px;
+  position: relative;
+  z-index: 5;
+  padding: 30px 0 0 30px;
+}
+
+#wrap main section.pick_country .map {
+  -webkit-perspective: 200px;
+          perspective: 200px;
+}
+
+#wrap main section.pick_country .map img {
+  -webkit-transform: translateZ(160px) translate(-620px, -440px);
+          transform: translateZ(160px) translate(-620px, -440px);
+  -webkit-transition: all 5s;
+  transition: all 5s;
+}
+
+#wrap main section.pick_country img {
+  position: absolute;
+}
+
+#wrap main section.pick_country img.hero {
+  top: 520px;
+  right: 340px;
+  width: 110px;
+  display: none;
+  z-index: 20;
+}
+
+#wrap main section.pick_country img.plane {
+  top: 520px;
+  right: 340px;
+  width: 110px;
+  display: none;
+  z-index: 20;
+}
+
+#wrap main section.pick_country img.ship {
+  top: 520px;
+  right: 340px;
+  width: 110px;
+  display: none;
+  z-index: 20;
+}
+
+#wrap main section.pick_country .pin_zone {
+  display: none;
+}
+
+#wrap main section.pick_country .pin_zone button {
+  cursor: pointer;
+  position: absolute;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+  border: 0;
+  background-color: transparent;
+  text-indent: -999999px;
+  background-image: url(../image/pin.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: contain;
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+}
+
+#wrap main section.pick_country .pin_zone button:hover {
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: all 100ms ease-in;
+  transition: all 100ms ease-in;
+}
+
+#wrap main section.pick_country .pin_zone button:nth-child(1) {
+  top: 703px;
+  right: 507px;
+}
+
+#wrap main section.pick_country .pin_zone button:nth-child(2) {
+  top: 550px;
+  right: 480px;
+}
+
+#wrap main section.pick_country .pin_zone button:nth-child(3) {
+  top: 714px;
+  right: 463px;
+}
+
+#wrap main section.pick_country .pin_zone button:nth-child(4) {
+  top: 588px;
+  right: 307px;
+}
+
+#wrap main section.pick_country .pin_zone button:nth-child(5) {
+  top: 510px;
+  right: 950px;
+}
+
+#wrap main section.pick_country .pin_zone button:nth-child(6) {
+  top: 556px;
+  right: 920px;
+}
+
+#wrap main section.pick_country .pin_zone button:nth-child(7) {
+  top: 538px;
+  right: 970px;
+}
+
+#wrap main section.pick_country .pin_zone button:nth-child(8) {
+  top: 674px;
+  right: 403px;
+}
+
+#wrap main section.pick_country .pin_zone button:nth-child(9) {
+  top: 729px;
+  right: 393px;
+}
+
+#wrap main section.pick_country .info_zone div {
+  width: 500px;
+  height: 400px;
+  background: #ffffff;
+  -webkit-box-shadow: 0 10px 30px rgba(51, 51, 51, 0.4);
+          box-shadow: 0 10px 30px rgba(51, 51, 51, 0.4);
+  border: 10px solid #015DB9;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 30;
+  display: none;
+}
+
+#wrap main section.pick_country .info_zone div.show {
+  display: block;
 }
 
 #wrap main section h2 {

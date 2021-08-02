@@ -13,7 +13,6 @@ $(function () {
             lego.colorChange();
             lego.showPop();
             lego.pinBtn();
-            lego.slider();
         },
         pageLoading: function () {
             setTimeout(function () {
@@ -90,7 +89,11 @@ $(function () {
                 };
                 setTimeout(() => {
                     $('.info_zone .country').eq(thisIndex).fadeIn().siblings().fadeOut();
+                    // lego.slider();
                 }, 1000);
+                setTimeout(() => {
+                    lego.slider();
+                }, 1005)
             });
             $('.info_zone .country button.close').on('click', function () {
                 $('.ship').fadeOut();
@@ -187,8 +190,7 @@ $(function () {
                 };
             },
             footer: function () {
-                console.log($('footer').offset().top); //9628.75
-                console.log(this.wT);
+                // console.log($('footer').offset().top); //9628.75
 
 
                 if (this.wT < $('footer').offset().top - 500) { //9129

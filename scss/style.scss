@@ -392,20 +392,76 @@ $green : #028640;
                     }
                 }
                 .info_zone{
-                    div{
-                        width: 500px;
-                        height: 400px;
+                    div.country{
+                        width: 600px;
+                        height: 500px;
                         background: $white;
                         box-shadow: 0 10px 30px rgba(51, 51, 51, 0.4);
-                        border: 10px solid $deep-blue;
+                        border: 10px solid $blue;
                         position: absolute;
                         left: 50%;
                         top: 50%;
                         transform: translate(-50%, -50%);
                         z-index: 30;
+                        border-radius: 30px;
+                        overflow: hidden;
                         display: none;
-                        &.show{
-                            display: block;
+                        h4{
+                            @include font('GmarketSansBold',28px,$black);
+                            text-align: center;
+                            margin-top: 20px;
+                        }
+                        .slider{
+                            width: 90%;
+                            height: 300px;
+                            margin: 0 auto;
+                            li{
+                                width: 540px;
+                                height: 400px;
+                                img{
+                                    width: 540px;
+                                    height: 300px;
+                                    object-fit: contain;
+                                }
+                                p{
+                                    font-size: 24px;
+                                    position: absolute;
+                                    top: 300px;
+                                    width: 500px;
+                                    text-align: center;
+                                }
+                            }
+                        }
+                        button{
+                            position: absolute;
+                            top: 18px;
+                            right: 10px;
+                            appearance: none;
+                            cursor: pointer;
+                            border: 0;
+                            border-radius: 14px;
+                            width: 40px;
+                            height: 40px;
+                            @include font("GmarketSansBold",16px,$black);
+                            &:hover{
+                                background: $yellow;
+                            }
+                            &.slick-prev{
+                                background: $deep-blue;
+                                top: 130px;
+                                left: -20px;
+                                z-index: 999;
+                                width: 60px;
+                                @include font("GmarketSansBold",10px,$white);
+                            }
+                            &.slick-next{
+                                background: $deep-blue;
+                                top: 130px;
+                                right: -20px;
+                                z-index: 999;
+                                width: 60px;
+                                @include font("GmarketSansBold",10px,$white);
+                            }
                         }
                     }
                 }
@@ -425,6 +481,35 @@ $green : #028640;
         }
     }
     footer{
-        @include font('GmarketSansBold',24px,$black);
+        width: 100%;
+        height: 0px;
+        background-color: $black;
+        position: fixed;
+        bottom: 0;
+        z-index: 999;
+        transition: all 1s;
+        background-image: url(../image/footer_face.gif);
+        background-repeat: repeat-x;
+        background-position: bottom;
+        .footer_conts{
+            width: 80vw;
+            margin: 50px auto 0;
+            h3{
+                @include font("Tourney",86px,$white);
+                text-align: center;
+                margin-bottom: 40px;
+                opacity: 0;
+                transform: translateY(100px);
+                transition: all 1s;
+            }
+            p{
+                text-align: center;
+                @include font('GmarketSansBold',16px,$white);
+                opacity: 0;
+                transform: translateY(100px);
+                transition: all 1s;
+            }
+
+        }
     }
 }

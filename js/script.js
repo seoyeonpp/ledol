@@ -13,6 +13,7 @@ $(function () {
             lego.colorChange();
             lego.showPop();
             lego.pinBtn();
+            lego.slider();
         },
         pageLoading: function () {
             setTimeout(function () {
@@ -38,7 +39,6 @@ $(function () {
                 color: "#f00",
             });
             //레고 머리,상체,하체 색상 변경
-            console.log($('#lego g'));
             $('#lego g').on('click', function () {
                 $(this).addClass('change').siblings().removeClass('change');
             });
@@ -84,18 +84,27 @@ $(function () {
 
                 $('.hero').fadeOut();
                 if (thisIndex == 3 || thisIndex == 7) {
-                    $('.ship').fadeIn().animate({ 'top': topArr[thisIndex] + 'px', 'right': rightArr[thisIndex] + 'px' }, 2000);
+                    $('.ship').fadeIn().animate({ 'top': topArr[thisIndex] + 'px', 'right': rightArr[thisIndex] + 'px' }, 1000);
                 } else {
-                    $('.plane').fadeIn().animate({ 'top': topArr[thisIndex] + 'px', 'right': rightArr[thisIndex] + 'px' }, 2000);
+                    $('.plane').fadeIn().animate({ 'top': topArr[thisIndex] + 'px', 'right': rightArr[thisIndex] + 'px' }, 1000);
                 };
                 setTimeout(() => {
-                    $('.info_zone div').eq(thisIndex).addClass('show').siblings().removeClass('show');
-                }, 2000);
+                    $('.info_zone .country').eq(thisIndex).fadeIn().siblings().fadeOut();
+                }, 1000);
             });
-            $('.info_zone div button').on('click', function () {
+            $('.info_zone .country button.close').on('click', function () {
                 $('.ship').fadeOut();
                 $('.plane').fadeOut();
-                $('.info_zone div').removeClass('show');
+                $('.info_zone .country').fadeOut();
+            });
+        },
+        slider: function () {
+            $('.slider').slick({
+                dots: false,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 1,
+                adaptiveHeight: true,
             });
         },
     };
@@ -118,6 +127,7 @@ $(function () {
                 scrollEv.introduce();
                 scrollEv.clothArea();
                 scrollEv.map();
+                scrollEv.footer();
             },
             putTogether: function () {
                 if (this.wT < 1500) {
@@ -174,6 +184,21 @@ $(function () {
                         $('.hero').fadeIn();
                         $('.pin_zone').fadeIn();
                     }, 4500)
+                };
+            },
+            footer: function () {
+                if (this.wT < 8683) {
+                    $('footer').css({ 'height': '0px' });
+                    $('footer h3').css({ 'opacity': '0', 'transform': 'translateY(100px)' });
+                    $('footer p').css({ 'opacity': '0', 'transform': 'translateY(100px)' });
+                } else if (this.wT > 8684) {
+                    $('footer').css({ 'height': '100vh' });
+                    setTimeout(() => {
+                        $('footer h3').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
+                    }, 1000);
+                    setTimeout(() => {
+                        $('footer p').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
+                    }, 1200);
                 };
             },
         };

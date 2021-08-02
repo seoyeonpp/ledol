@@ -7,11 +7,13 @@
     <title>LEDOL'S TRIP</title>
     <!-- style -->
     <link rel="shortcut icon" href="image/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" href="css/style.css">
     
     <!-- script -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="js/script.js"></script>
 </head>
 <body>
@@ -178,48 +180,225 @@
                     <button>필리핀</button>
                 </div>
                 <div class="info_zone">
-                    <div class="thai">
+                    <div class="thai country">
                         <h4>태국</h4>
-                        <button>Close</button>
+                        <ul class="slider">
+                            <li>
+                                <img src="image/thai_1.jpg" alt="태국여행사진">
+                                <p>태국의 길거리! 분위기 있지 않나요?</p>
+                            </li>
+                            <li>
+                                <img src="image/thai_2.jpg" alt="태국여행사진">
+                                <p>우기라 그런지 비가 너무많이와요.</p>
+                            </li>
+                            <li>
+                                <img src="image/thai_3.jpg" alt="태국여행사진">
+                                <p>태국의 거리~</p>
+                            </li>
+                            <li>
+                                <img src="image/thai_4.jpg" alt="태국여행사진">
+                                <p>야경을 보면서 선상파티!</p>
+                            </li>
+                        </ul>
+                        <button class="close">X</button>
                     </div>
-                    <div class="mongolia">
+                    <div class="mongolia country">
                         <h4>몽골</h4>
-                        <button>Close</button>
+                        <ul class="slider">
+                            <li>
+                                <img src="image/mongolia_3.jpg" alt="몽골여행사진">
+                                <p>고비사막 도착! 너무 더워요.</p>
+                            </li>
+                            <li>
+                                <img src="image/mongolia_2.jpg" alt="몽골여행사진">
+                                <p>몽골의 초원, 너무 멋있죠?</p>
+                            </li>
+                            <li>
+                                <img src="image/mongolia_4.jpg" alt="몽골여행사진">
+                                <p>사막에 슬리퍼를 신고갔더니, 다 녹았어요!</p>
+                            </li>
+                            <li>
+                                <img src="image/mongolia_5.jpg" alt="몽골여행사진">
+                                <p>게르에서 별을 보며 잠에 들어요!</p>
+                            </li>
+                            <li>
+                                <img src="image/mongolia_6.jpg" alt="몽골여행사진">
+                                <p>몽골친구들과 헤어지는날~ 팔에 작별인사를 써줬어요.</p>
+                            </li>
+                        </ul>
+                        <button class="close">X</button>
                     </div>
-                    <div class="vietnam">
+                    <div class="vietnam country">
                         <h4>베트남</h4>
-                        <button>Close</button>
+                        <ul class="slider">
+                            <li>
+                                <img src="image/vietnam_1.png" alt="베트남여행사진">
+                                <p>호이안 도착! 등불이 보여요~</p>
+                            </li>
+                            <li>
+                                <img src="image/vietnam_2.png" alt="베트남여행사진">
+                                <p>분위기 있는 등불을 보며 여행을 즐겨요!</p>
+                            </li>
+                            <li>
+                                <img src="image/vietnam_3.png" alt="베트남여행사진">
+                                <p>다낭에서 먹은 인생 반미! 다음에 또 먹으러 갈게요!</p>
+                            </li>
+                            <li>
+                                <img src="image/vietnam_4.png" alt="베트남여행사진">
+                                <p>드디어 그 유명한 콩카페를 다녀왔어요~</p>
+                            </li>
+                            <li>
+                                <img src="image/vietnam_5.png" alt="베트남여행사진">
+                                <p>역시 베트남에 분짜가 유명한 이유가 있죠~</p>
+                            </li>
+                            <li>
+                                <img src="image/vietnam_6.png" alt="베트남여행사진">
+                                <p>베트남에도 놀이공원이 있어요! 꿀잼보장!</p>
+                            </li>
+                        </ul>
+                        <button class="close">X</button>
                     </div>
-                    <div class="japan">
+                    <div class="japan country">
                         <h4>일본</h4>
-                        <button>Close</button>
+                        <ul class="slider">
+                            <li>
+                                <img src="image/japan_1.jpg" alt="일본여행사진">
+                                <p>오사카성의 모습~ 아름답죠?</p>
+                            </li>
+                            <li>
+                                <img src="image/japan_2.jpg" alt="일본여행사진">
+                                <p>도톤보리의 모습! 구경해요</p>
+                            </li>
+                            <li>
+                                <img src="image/japan_3.jpg" alt="일본여행사진">
+                                <p>유니버셜 스튜디오에서 놀이기구를 마음껏 타봐요!</p>
+                            </li>
+                            <li>
+                                <img src="image/japan_4.jpg" alt="일본여행사진">
+                                <p>오사카의 거리는 항상 관광객들로 북적북적이죠!</p>
+                            </li>
+                        </ul>
+                        <button class="close">X</button>
                     </div>
-                    <div class="swiss">
+                    <div class="swiss country">
                         <h4>스위스</h4>
-                        <button>Close</button>
+                        <ul class="slider">
+                            <li>
+                                <img src="image/thai_1.jpg" alt="스위스여행사진">
+                                <p>아직사진없음</p>
+                            </li>
+                            <li>
+                                <img src="image/thai_2.jpg" alt="스위스여행사진">
+                                <p>아직사진없음</p>
+                            </li>
+                            <li>
+                                <img src="image/thai_3.jpg" alt="스위스여행사진">
+                                <p>아직사진없음</p>
+                            </li>
+                            <li>
+                                <img src="image/thai_4.jpg" alt="스위스여행사진">
+                                <p>아직사진없음</p>
+                            </li>
+                        </ul>
+                        <button class="close">X</button>
                     </div>
-                    <div class="italia">
+                    <div class="italia country">
                         <h4>이탈리아</h4>
-                        <button>Close</button>
+                        <ul class="slider">
+                            <li>
+                                <img src="image/thai_1.jpg" alt="이탈리아여행사진">
+                                <p>아직사진없음</p>
+                            </li>
+                            <li>
+                                <img src="image/thai_2.jpg" alt="이탈리아여행사진">
+                                <p>아직사진없음</p>
+                            </li>
+                            <li>
+                                <img src="image/thai_3.jpg" alt="이탈리아여행사진">
+                                <p>아직사진없음</p>
+                            </li>
+                            <li>
+                                <img src="image/thai_4.jpg" alt="이탈리아여행사진">
+                                <p>아직사진없음</p>
+                            </li>
+                        </ul>
+                        <button class="close">X</button>
                     </div>
-                    <div class="france">
+                    <div class="france country">
                         <h4>프랑스</h4>
-                        <button>Close</button>
+                        <ul class="slider">
+                            <li>
+                                <img src="image/thai_1.jpg" alt="프랑스여행사진">
+                                <p>아직사진없음</p>
+                            </li>
+                            <li>
+                                <img src="image/thai_2.jpg" alt="프랑스여행사진">
+                                <p>아직사진없음</p>
+                            </li>
+                            <li>
+                                <img src="image/thai_3.jpg" alt="프랑스여행사진">
+                                <p>아직사진없음</p>
+                            </li>
+                            <li>
+                                <img src="image/thai_4.jpg" alt="프랑스여행사진">
+                                <p>아직사진없음</p>
+                            </li>
+                        </ul>
+                        <button class="close">X</button>
                     </div>
-                    <div class="taiwan">
+                    <div class="taiwan country">
                         <h4>대만</h4>
-                        <button>Close</button>
+                        <ul class="slider">
+                            <li>
+                                <img src="image/taiwan_1.png" alt="대만여행사진">
+                                <p>대만의 밤, 야경이 정말 멋져요</p>
+                            </li>
+                            <li>
+                                <img src="image/taiwan_2.png" alt="대만여행사진">
+                                <p>대만에서는 다들 텀블러주머니를 들고다녀요~</p>
+                            </li>
+                            <li>
+                                <img src="image/taiwan_3.png" alt="대만여행사진">
+                                <p>대만의 쌍용탑! 웅장해요</p>
+                            </li>
+                            <li>
+                                <img src="image/taiwan_4.png" alt="대만여행사진">
+                                <p>대만 지하철에서는 음료 절대 금지~ 깔끔함의 비결이죠!</p>
+                            </li>
+                        </ul>
+                        <button class="close">X</button>
                     </div>
-                    <div class="philippine">
+                    <div class="philippine country">
                         <h4>필리핀</h4>
-                        <button>Close</button>
+                        <ul class="slider">
+                            <li>
+                                <img src="image/philippine_1.jpg" alt="필리핀여행사진">
+                                <p>푸른하늘의 필리핀! 엄청 더워요~</p>
+                            </li>
+                            <li>
+                                <img src="image/philippine_2.jpg" alt="필리핀여행사진">
+                                <p>필리핀에서 유럽을 볼수있어요~</p>
+                            </li>
+                            <li>
+                                <img src="image/philippine_3.jpg" alt="필리핀여행사진">
+                                <p>필리핀의 국민 패스트푸드! 졸리비에서 점심~</p>
+                            </li>
+                            <li>
+                                <img src="image/philippine_4.jpg" alt="필리핀여행사진">
+                                <p>호텔리어분이 만들어주신 수건 강아지~ 너무 귀엽죠?</p>
+                            </li>
+                        </ul>
+                        <button class="close">X</button>
                     </div>
                 </div>
             </section>
         </main>
         <footer>
-            <p>레돌이와 함께한 여행은 즐거우셨나요? 다음에 또봐요!</p>
-            <p>Copyright &copy; 2021 seoyeon,Park All rights reserved.</p>
+            <div class="footer_conts">
+                <h3>THE END</h3>
+                <p>레돌이와 함께한 여행은 즐거우셨나요? 다음에 또봐요!</p>
+                <p>Copyright &copy; 2021 seoyeon,Park All rights reserved.</p>
+            </div>
         </footer>
     </div>
 </body>

@@ -606,24 +606,99 @@ a {
   right: 393px;
 }
 
-#wrap main section.pick_country .info_zone div {
-  width: 500px;
-  height: 400px;
+#wrap main section.pick_country .info_zone div.country {
+  width: 600px;
+  height: 500px;
   background: #ffffff;
   -webkit-box-shadow: 0 10px 30px rgba(51, 51, 51, 0.4);
           box-shadow: 0 10px 30px rgba(51, 51, 51, 0.4);
-  border: 10px solid #015DB9;
+  border: 10px solid #006DB7;
   position: absolute;
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   z-index: 30;
+  border-radius: 30px;
+  overflow: hidden;
   display: none;
 }
 
-#wrap main section.pick_country .info_zone div.show {
-  display: block;
+#wrap main section.pick_country .info_zone div.country h4 {
+  font-family: "GmarketSansBold";
+  font-size: 28px;
+  color: #333333;
+  text-align: center;
+  margin-top: 20px;
+}
+
+#wrap main section.pick_country .info_zone div.country .slider {
+  width: 90%;
+  height: 300px;
+  margin: 0 auto;
+}
+
+#wrap main section.pick_country .info_zone div.country .slider li {
+  width: 540px;
+  height: 400px;
+}
+
+#wrap main section.pick_country .info_zone div.country .slider li img {
+  width: 540px;
+  height: 300px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+#wrap main section.pick_country .info_zone div.country .slider li p {
+  font-size: 24px;
+  position: absolute;
+  top: 300px;
+  width: 500px;
+  text-align: center;
+}
+
+#wrap main section.pick_country .info_zone div.country button {
+  position: absolute;
+  top: 18px;
+  right: 10px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  cursor: pointer;
+  border: 0;
+  border-radius: 14px;
+  width: 40px;
+  height: 40px;
+  font-family: "GmarketSansBold";
+  font-size: 16px;
+  color: #333333;
+}
+
+#wrap main section.pick_country .info_zone div.country button:hover {
+  background: #FFCF00;
+}
+
+#wrap main section.pick_country .info_zone div.country button.slick-prev {
+  background: #015DB9;
+  top: 130px;
+  left: -20px;
+  z-index: 999;
+  width: 60px;
+  font-family: "GmarketSansBold";
+  font-size: 10px;
+  color: #ffffff;
+}
+
+#wrap main section.pick_country .info_zone div.country button.slick-next {
+  background: #015DB9;
+  top: 130px;
+  right: -20px;
+  z-index: 999;
+  width: 60px;
+  font-family: "GmarketSansBold";
+  font-size: 10px;
+  color: #ffffff;
 }
 
 #wrap main section h2 {
@@ -645,8 +720,46 @@ a {
 }
 
 #wrap footer {
+  width: 100%;
+  height: 0px;
+  background-color: #333333;
+  position: fixed;
+  bottom: 0;
+  z-index: 999;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  background-image: url(../image/footer_face.gif);
+  background-repeat: repeat-x;
+  background-position: bottom;
+}
+
+#wrap footer .footer_conts {
+  width: 80vw;
+  margin: 50px auto 0;
+}
+
+#wrap footer .footer_conts h3 {
+  font-family: "Tourney";
+  font-size: 86px;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 40px;
+  opacity: 0;
+  -webkit-transform: translateY(100px);
+          transform: translateY(100px);
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+#wrap footer .footer_conts p {
+  text-align: center;
   font-family: "GmarketSansBold";
-  font-size: 24px;
-  color: #333333;
+  font-size: 16px;
+  color: #ffffff;
+  opacity: 0;
+  -webkit-transform: translateY(100px);
+          transform: translateY(100px);
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 /*# sourceMappingURL=style.css.map */

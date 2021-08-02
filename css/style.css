@@ -724,9 +724,11 @@ a {
   height: 500px;
   -webkit-transition: all 1s;
   transition: all 1s;
+  background-color: #333333;
   background-image: url(../image/footer_face.gif);
   background-repeat: repeat-x;
   background-position: bottom;
+  background-size: auto;
 }
 
 #wrap footer .footer_conts {

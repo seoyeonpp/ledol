@@ -80,7 +80,7 @@ $(function () {
                 const thisIndex = $(this).index(),
                     topArr = [703, 550, 714, 588, 510, 556, 538, 674, 729],
                     rightArr = [507, 480, 463, 307, 950, 920, 970, 403, 393];
-                console.log(thisIndex);
+                // console.log(thisIndex);
 
                 $('.hero').fadeOut();
                 if (thisIndex == 3 || thisIndex == 7) {
@@ -187,11 +187,15 @@ $(function () {
                 };
             },
             footer: function () {
-                if (this.wT < 8683) {
-                    $('footer').css({ 'height': '0px' });
+                console.log($('footer').offset().top); //9628.75
+                console.log(this.wT);
+
+
+                if (this.wT < $('footer').offset().top - 500) { //9129
+                    $('footer').css({ 'height': '500px' });
                     $('footer h3').css({ 'opacity': '0', 'transform': 'translateY(100px)' });
                     $('footer p').css({ 'opacity': '0', 'transform': 'translateY(100px)' });
-                } else if (this.wT > 8684) {
+                } else if (this.wT >= $('footer').offset().top - 500) { // 9128
                     $('footer').css({ 'height': '100vh' });
                     setTimeout(() => {
                         $('footer h3').css({ 'opacity': '1', 'transform': 'translateY(0px)' });

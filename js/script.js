@@ -90,10 +90,15 @@ $(function () {
                 setTimeout(() => {
                     $('.info_zone .country').eq(thisIndex).fadeIn().siblings().fadeOut();
                     // lego.slider();
+                    const currentCountry = $('.info_zone .country').eq(thisIndex).attr('data-country'), //클릭한 버튼의 data-country값 구해옴
+                        currentSlide = $('.info_zone .country').eq(thisIndex).find('.slider'), // 버튼의 index에 해당하는 엘리먼트 하위의 slider
+                        countryBox = $('.info_zone .country').hasClass(currentCountry); // data-country와 동일한클래스를 가진 버튼인지 확인 true, false
+                    console.log(currentCountry);
+                    console.log(countryBox);
+                    if (countryBox) {
+                        lego.slider(currentSlide);
+                    };
                 }, 1000);
-                setTimeout(() => {
-                    lego.slider();
-                }, 1005)
             });
             $('.info_zone .country button.close').on('click', function () {
                 $('.ship').fadeOut();
@@ -101,14 +106,14 @@ $(function () {
                 $('.info_zone .country').fadeOut();
             });
         },
-        slider: function () {
-            $('.slider').slick({
+        slider: function (current) {
+            $(current).slick({
                 dots: false,
                 infinite: true,
                 speed: 300,
                 slidesToShow: 1,
-                adaptiveHeight: true,
             });
+            console.log(current);
         },
     };
     lego.init();

@@ -10,6 +10,7 @@ $(function () {
         init: function () {
             lego.pageLoading();
             lego.textAni();
+            lego.drag();
             lego.colorChange();
             lego.showPop();
             lego.pinBtn();
@@ -30,6 +31,33 @@ $(function () {
             setTimeout(() => {
                 this.$icon.css({ opacity: 1 });
             }, 3000);
+        },
+        drag: function () {
+            // 마우스로 드래그 후 좌표가 맞는곳에 넣으면 complete! 텍스트 fadeIn
+            let head = $('.scrolling .head'),
+                upper_body = $('.scrolling .upper_body'),
+                lower_body = $('.scrolling .lower_body');
+
+            if (head.offset().top == 1550.1875 && head.offset().left == 597) {
+                $('.scrolling .complete').fadeIn();
+            };
+
+            $('.scrolling img').draggable({
+                'scroll': false,
+                containment: 'parent',
+                cancel: ".outline",
+            });
+
+            $('.scrolling .outline').droppable({
+                drop: function (e, ui) {
+                    console.log('들어왔습니다');
+                    $('.scrolling .complete').fadeIn();
+                    setTimeout(() => {
+                        $('.scrolling .complete').fadeOut();
+                    }, 1000);
+                },
+            });
+
         },
         colorChange: function () {
             // iro컬러픽커 플러그인
@@ -77,9 +105,11 @@ $(function () {
         pinBtn: function () {
             $('.pin_zone button').on('click', function () {
                 const thisIndex = $(this).index(),
+                    country = $(this).attr('data-country'),
+                    slideBox = $('.info_zone .country').eq(thisIndex).find('.slider'),
                     topArr = [703, 550, 714, 588, 510, 556, 538, 674, 729],
                     rightArr = [507, 480, 463, 307, 950, 920, 970, 403, 393];
-                // console.log(thisIndex);
+                console.log(country);
 
                 $('.hero').fadeOut();
                 if (thisIndex == 3 || thisIndex == 7) {
@@ -89,14 +119,8 @@ $(function () {
                 };
                 setTimeout(() => {
                     $('.info_zone .country').eq(thisIndex).fadeIn().siblings().fadeOut();
-                    // lego.slider();
-                    const currentCountry = $('.info_zone .country').eq(thisIndex).attr('data-country'), //클릭한 버튼의 data-country값 구해옴
-                        currentSlide = $('.info_zone .country').eq(thisIndex).find('.slider'), // 버튼의 index에 해당하는 엘리먼트 하위의 slider
-                        countryBox = $('.info_zone .country').hasClass(currentCountry); // data-country와 동일한클래스를 가진 버튼인지 확인 true, false
-                    console.log(currentCountry);
-                    console.log(countryBox);
-                    if (countryBox) {
-                        lego.slider(currentSlide);
+                    if ($('.info_zone .country').hasClass(country) == true) {
+                        lego.slider(slideBox);
                     };
                 }, 1000);
             });
@@ -113,7 +137,6 @@ $(function () {
                 speed: 300,
                 slidesToShow: 1,
             });
-            console.log(current);
         },
     };
     lego.init();
@@ -125,9 +148,6 @@ $(function () {
         scrollEv = {
             wT: $(window).scrollTop(),
             scrollSection: $('section.scrolling').height(),
-            head: $('.scrolling .head'),
-            upper_body: $('.scrolling .upper_body'),
-            lower_body: $('.scrolling .lower_body'),
             intro: $('section.intro').offset().top,
             conwrap: $('.intro .contents_wrap'),
             init: function () {
@@ -138,33 +158,47 @@ $(function () {
                 scrollEv.footer();
             },
             putTogether: function () {
-                if (this.wT < 1500) {
-                    this.head.css({ 'opacity': '0', 'left': '0' });
-                    this.upper_body.css({ 'opacity': '0', 'left': '0' });
-                    this.lower_body.css({ 'opacity': '0', 'left': '0' });
-
-                } else if (this.wT < 2500) {
-                    this.head.css({ 'opacity': '1', 'left': '50%' });
-                    $('.scrolling p').removeClass('on');
-                } else if (this.wT < 3600) {
-                    this.upper_body.css({ 'opacity': '1', 'left': '50%' });
-                    $('.scrolling p').removeClass('on');
-                } else if (this.wT < this.scrollSection) {
-                    this.lower_body.css({ 'opacity': '1', 'left': '50%' });
-                    if (this.wT > 4200) {
-                        $('.scrolling p').addClass('on');
-                    }
-                } else {
-                    this.head.css({ 'opacity': '0', 'left': '0' });
-                    this.upper_body.css({ 'opacity': '0', 'left': '0' });
-                    this.lower_body.css({ 'opacity': '0', 'left': '0' });
+                if (this.wT < $('.scrolling').offset().top - 501) {
+                    $('.scrolling p:not(:last-child)').css({ 'opacity': '0', 'transform': 'translateX(-200px)' });
+                    $('.scrolling h2').css({ 'opacity': '0', 'transform': 'translateY(-300px)' });
+                } else if (this.wT > $('.scrolling').offset().top - 500) {
+                    $('.scrolling h2').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
                     setTimeout(() => {
-                        $('.scrolling p').removeClass('on');
+                        $('.scrolling p:not(:last-child)').css({ 'opacity': '1', 'transform': 'translateX(0px)' });
                     }, 500);
                 }
+
+
+                // if (this.wT < 1500) {
+                //     this.head.css({ 'opacity': '0', 'left': '0' });
+                //     this.upper_body.css({ 'opacity': '0', 'left': '0' });
+                //     this.lower_body.css({ 'opacity': '0', 'left': '0' });
+
+                // } else if (this.wT < 2500) {
+                //     this.head.css({ 'opacity': '1', 'left': '50%' });
+                //     $('.scrolling p').removeClass('on');
+                // } else if (this.wT < 3600) {
+                //     this.upper_body.css({ 'opacity': '1', 'left': '50%' });
+                //     $('.scrolling p').removeClass('on');
+                // } else if (this.wT < this.scrollSection) {
+                //     this.lower_body.css({ 'opacity': '1', 'left': '50%' });
+                //     if (this.wT > 4200) {
+                //         $('.scrolling p').addClass('on');
+                //     }
+                // } else {
+                //     this.head.css({ 'opacity': '0', 'left': '0' });
+                //     this.upper_body.css({ 'opacity': '0', 'left': '0' });
+                //     this.lower_body.css({ 'opacity': '0', 'left': '0' });
+                //     setTimeout(() => {
+                //         $('.scrolling p').removeClass('on');
+                //     }, 500);
+                // }
+
+
             },
             introduce: function () {
                 if (this.wT > this.intro - 500) {
+                    $('.intro h2').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
                     this.conwrap.animate({ width: '100%' }, 1000);
                     setTimeout(() => {
                         scrollEv.conwrap.find('img').css({ 'opacity': '1', 'transform': 'translateX(0px)' });
@@ -173,36 +207,35 @@ $(function () {
                 };
             },
             clothArea: function () {
-                // console.log($('.cloth_change').offset().top); //7174.375
                 if (this.wT > $('.cloth_change').offset().top - 500) {
+                    $('.cloth_change h2').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
                     setTimeout(() => {
                         $('.cloth_color_wrap > svg').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
                         $('.cloth_color_wrap .click').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
                     }, 300)
                     setTimeout(() => {
                         $('.cloth_color_wrap > .color_zone').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
-                    }, 800)
+                    }, 600)
+                    setTimeout(() => {
+                        $('.advice_memo').addClass('memo');
+                    }, 1200)
                 }
             },
             map: function () {
-                // console.log($('.pick_country').offset().top); //8401.5625
                 if (this.wT > $('.pick_country').offset().top - 100) {
-                    $('.pick_country .map img').css({ 'transform': 'translateZ(-20px) translate(0px, 60px)' });
+                    // $('.pick_country .map img').css({ 'transform': 'translateZ(-20px) translate(0px, 60px)' });
                     setTimeout(() => {
                         $('.hero').fadeIn();
                         $('.pin_zone').fadeIn();
-                    }, 4500)
+                    }, 500)
                 };
             },
             footer: function () {
-                // console.log($('footer').offset().top); //9628.75
-
-
-                if (this.wT < $('footer').offset().top - 500) { //9129
+                if (this.wT < $('footer').offset().top - 500) {
                     $('footer').css({ 'height': '500px' });
                     $('footer h3').css({ 'opacity': '0', 'transform': 'translateY(100px)' });
                     $('footer p').css({ 'opacity': '0', 'transform': 'translateY(100px)' });
-                } else if (this.wT >= $('footer').offset().top - 500) { // 9128
+                } else if (this.wT >= $('footer').offset().top - 500) {
                     $('footer').css({ 'height': '100vh' });
                     setTimeout(() => {
                         $('footer h3').css({ 'opacity': '1', 'transform': 'translateY(0px)' });

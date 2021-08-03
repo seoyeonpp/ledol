@@ -189,7 +189,7 @@ $green : #028640;
                     left: 50%;
                     transform: translateX(-50%);
                     text-align: center;
-                    @include font("Tourney",48px,$black);
+                    @include font("Tourney",48px,$red);
                     display: none;
                 }
                 // position: relative;

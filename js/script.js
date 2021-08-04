@@ -110,15 +110,6 @@ $(function () {
         pinBtn: function () {
             let oldOffset = $('.hero').offset().left + $('.hero').outerWidth();
 
-            /* 
-                버그:
-                핀 클릭 전 $('.hero').offset().left + $('.hero').outerWidth(); 콘솔 출력 시, '1608.4687'
-                핀 클릭 후 $('.hero').offset().left + $('.hero').outerWidth(); 콘솔 출력 시, '72.5338'
-                
-                그래서 처음에 left좌표가 적은곳(유럽,몽골 등 왼쪽에 있는 핀)을 클릭했을때 비행기가 반전되지 않는 오류 발생함
-                다른나라 클릭하고 다시 클릭해야만 잘 실행됨
-            */
-
             // 핀 클릭 시 실행
             $('.pin_zone button').on('click', function () {
                 const thisIndex = $(this).index(),
@@ -129,8 +120,8 @@ $(function () {
                 let currentOffset = $(this).offset().left + $(this).outerWidth();
 
                 //클릭한 위치에 따라 이미지 반전
-                console.log(`이전 좌표는 : ${oldOffset}`); //$('.hero').offset().left + $('.hero').outerWidth(); 이게 왜 72? 
-                console.log(`클릭한 좌표는 : ${currentOffset}`); //
+                console.log(`이전 좌표는 : ${oldOffset}`);
+                console.log(`클릭한 좌표는 : ${currentOffset}`);
                 if (oldOffset > currentOffset) {
                     $('.plane').css({ 'transform': 'rotateY(180deg)' });
                     $('.ship').css({ 'transform': 'rotateY(180deg)' });
@@ -144,20 +135,22 @@ $(function () {
                 };
 
                 //클릭한 위치로 배,비행기 이동
-                $('.hero').fadeOut();
+
                 if (thisIndex == 3 || thisIndex == 7) {
+                    $('.hero').css({ 'opacity': '0' });
                     $('.ship').fadeIn().animate({ 'top': topArr[thisIndex] + 'vw', 'right': rightArr[thisIndex] + 'vw' }, 1000);
                     $('.plane').animate({ 'top': topArr[thisIndex] + 'vw', 'right': rightArr[thisIndex] + 'vw' }, 1000);
                     setTimeout(() => {
                         $(this).fadeOut();
-                        $('.hero').fadeIn().css({ 'top': topArr[thisIndex] + 'vw', 'right': rightArr[thisIndex] + 'vw' });
+                        $('.hero').css({ 'top': topArr[thisIndex] + 'vw', 'right': rightArr[thisIndex] + 'vw', 'opacity': '1' });
                     }, 1200);
                 } else {
+                    $('.hero').css({ 'opacity': '0' });
                     $('.plane').fadeIn().animate({ 'top': topArr[thisIndex] + 'vw', 'right': rightArr[thisIndex] + 'vw' }, 1000);
                     $('.ship').animate({ 'top': topArr[thisIndex] + 'vw', 'right': rightArr[thisIndex] + 'vw' }, 1000);
                     setTimeout(() => {
                         $(this).fadeOut();
-                        $('.hero').fadeIn().css({ 'top': topArr[thisIndex] + 'vw', 'right': rightArr[thisIndex] + 'vw' });
+                        $('.hero').css({ 'top': topArr[thisIndex] + 'vw', 'right': rightArr[thisIndex] + 'vw', 'opacity': '1' });
                     }, 1200);
                 };
 
@@ -176,7 +169,7 @@ $(function () {
             $('.info_zone .country button.close').on('click', function () {
                 $('.ship').fadeOut();
                 $('.plane').fadeOut();
-                $('.hero').fadeOut();
+                // $('.hero').fadeOut();
                 $('.info_zone .country').fadeOut();
                 setTimeout(() => {
                     $('.pin_zone button').attr('style', "display: block;");

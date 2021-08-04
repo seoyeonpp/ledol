@@ -169,7 +169,6 @@ $(function () {
             $('.info_zone .country button.close').on('click', function () {
                 $('.ship').fadeOut();
                 $('.plane').fadeOut();
-                // $('.hero').fadeOut();
                 $('.info_zone .country').fadeOut();
                 setTimeout(() => {
                     $('.pin_zone button').attr('style', "display: block;");

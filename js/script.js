@@ -108,7 +108,16 @@ $(function () {
             $('body').removeAttr('style');
         },
         pinBtn: function () {
-            let oldOffset = 1623.4687;/* $('.hero').offset().left + $('.hero').outerWidth(); */ //1623.4687
+            let oldOffset = $('.hero').offset().left + $('.hero').outerWidth();
+
+            /* 
+                버그:
+                핀 클릭 전 $('.hero').offset().left + $('.hero').outerWidth(); 콘솔 출력 시, '1608.4687'
+                핀 클릭 후 $('.hero').offset().left + $('.hero').outerWidth(); 콘솔 출력 시, '72.5338'
+                
+                그래서 처음에 left좌표가 적은곳(유럽,몽골 등 왼쪽에 있는 핀)을 클릭했을때 비행기가 반전되지 않는 오류 발생함
+                다른나라 클릭하고 다시 클릭해야만 잘 실행됨
+            */
 
             // 핀 클릭 시 실행
             $('.pin_zone button').on('click', function () {
@@ -134,6 +143,7 @@ $(function () {
                     currentOffset = $(this).offset().left + $(this).outerWidth();
                 };
 
+                //클릭한 위치로 배,비행기 이동
                 $('.hero').fadeOut();
                 if (thisIndex == 3 || thisIndex == 7) {
                     $('.ship').fadeIn().animate({ 'top': topArr[thisIndex] + 'vw', 'right': rightArr[thisIndex] + 'vw' }, 1000);
@@ -150,6 +160,8 @@ $(function () {
                         $('.hero').fadeIn().css({ 'top': topArr[thisIndex] + 'vw', 'right': rightArr[thisIndex] + 'vw' });
                     }, 1200);
                 };
+
+                //1초후 팝업 실행
                 setTimeout(() => {
                     $('.info_zone .country').eq(thisIndex).fadeIn().siblings().fadeOut();
                     $('.pin_zone button').eq(thisIndex).siblings().css({ 'pointer-events': 'none' }); //팝업이 떠있을땐 다른 버튼 클릭 금지

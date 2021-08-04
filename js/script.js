@@ -16,10 +16,11 @@ $(function () {
             lego.pinBtn();
         },
         pageLoading: function () {
+            $('#wrap').css({ 'height': '100vh', 'overflow-y': 'hidden' });
             setTimeout(function () {
                 $('#loading').fadeOut();
-                $('#wrap').fadeIn();
-            }, 1500);
+                $('#wrap').css({ 'opacity': '1', 'visibility': 'visible', 'height': 'auto', 'overflow-y': 'auto' });
+            }, 1000);
         },
         textAni: function () {
             //메인 텍스트 애니메이션
@@ -34,13 +35,7 @@ $(function () {
         },
         drag: function () {
             // 마우스로 드래그 후 좌표가 맞는곳에 넣으면 complete! 텍스트 fadeIn
-            let head = $('.scrolling .head'),
-                upper_body = $('.scrolling .upper_body'),
-                lower_body = $('.scrolling .lower_body');
-
-            if (head.offset().top == 1550.1875 && head.offset().left == 597) {
-                $('.scrolling .complete').fadeIn();
-            };
+            let isRevert = true;
 
             $('.scrolling img').draggable({
                 'scroll': false,
@@ -51,11 +46,63 @@ $(function () {
                 snapTolerance: 50,
                 stack: ".draggable",
                 opacity: 0.7,
+                revert: function (event, ui) {
+                    // droppable 아닌곳에 들어갔을때
+                    if (event == false) {
+                        isRevert = false;
+                        return true;
+                    } else {
+                        //droppable 인곳에 들어갔을때
+                        isRevert = true;
+                    };
+                },
             });
 
-            $('.scrolling .outline').droppable({
+            $('.scrolling .outline_head').droppable({
+                accept: ".head",
                 drop: function (e, ui) {
-                    console.log('들어왔습니다');
+                    ui.draggable.position({
+                        my: "center",
+                        at: "center",
+                        of: $(this),
+                        using: function (pos) {
+                            $(this).animate(pos, 200, 'linear');
+                        }
+                    })
+                    $('.scrolling .complete').fadeIn();
+                    setTimeout(() => {
+                        $('.scrolling .complete').fadeOut();
+                    }, 1000);
+                },
+            });
+            $('.scrolling .outline_upper').droppable({
+                accept: ".upper_body",
+                drop: function (e, ui) {
+                    ui.draggable.position({
+                        my: "center",
+                        at: "center",
+                        of: $(this),
+                        using: function (pos) {
+                            $(this).animate(pos, 200, 'linear');
+                        }
+                    })
+                    $('.scrolling .complete').fadeIn();
+                    setTimeout(() => {
+                        $('.scrolling .complete').fadeOut();
+                    }, 1000);
+                },
+            });
+            $('.scrolling .outline_lower').droppable({
+                accept: ".lower_body",
+                drop: function (e, ui) {
+                    ui.draggable.position({
+                        my: "center",
+                        at: "center",
+                        of: $(this),
+                        using: function (pos) {
+                            $(this).animate(pos, 200, 'linear');
+                        }
+                    })
                     $('.scrolling .complete').fadeIn();
                     setTimeout(() => {
                         $('.scrolling .complete').fadeOut();

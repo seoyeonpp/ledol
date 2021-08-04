@@ -108,26 +108,30 @@ $(function () {
             $('body').removeAttr('style');
         },
         pinBtn: function () {
-            // 핀 클릭 시 실행
-            const oldOffset = $('.hero').offset().left + $('.hero').outerWidth();
+            let oldOffset = 1623.4687;/* $('.hero').offset().left + $('.hero').outerWidth(); */ //1623.4687
 
+            // 핀 클릭 시 실행
             $('.pin_zone button').on('click', function () {
                 const thisIndex = $(this).index(),
                     country = $(this).attr('data-country'),
                     slideBox = $('.info_zone .country').eq(thisIndex).find('.slider'),
                     topArr = [39.7917, 28.7778, 40.2083, 32.4167, 28.6944, 32, 30.6389, 37, 41.2917],
-                    rightArr = [23.7361, 23.5556, 21.8194, 12.8472, 48.9722, 47.8889, 50.3611, 18, 17.125],
-                    currentOffset = $(this).offset().left + $(this).outerWidth();
+                    rightArr = [23.7361, 23.5556, 21.8194, 12.8472, 48.9722, 47.8889, 50.3611, 18, 17.125];
+                let currentOffset = $(this).offset().left + $(this).outerWidth();
 
-
-
-                //현재의 left좌표가 클릭한곳의 left좌표보다 작으면 비행기가 rotateY(180deg)
-                console.log(`처음좌표는 : ${oldOffset}`); //처음의 레돌이좌표
-                console.log(`클릭한 좌표는 : ${currentOffset}`); //left 좌표
-                if (oldOffset < currentOffset) {
+                //클릭한 위치에 따라 이미지 반전
+                console.log(`이전 좌표는 : ${oldOffset}`); //$('.hero').offset().left + $('.hero').outerWidth(); 이게 왜 72? 
+                console.log(`클릭한 좌표는 : ${currentOffset}`); //
+                if (oldOffset > currentOffset) {
                     $('.plane').css({ 'transform': 'rotateY(180deg)' });
-                } else {
-                    $('.plane').attr({ 'transform': 'rotateY(360deg)' });
+                    $('.ship').css({ 'transform': 'rotateY(180deg)' });
+                    oldOffset = currentOffset;
+                    currentOffset = $(this).offset().left + $(this).outerWidth();
+                } else if (oldOffset < currentOffset) {
+                    $('.plane').css({ 'transform': 'rotateY(0deg)' });
+                    $('.ship').css({ 'transform': 'rotateY(0deg)' });
+                    oldOffset = currentOffset;
+                    currentOffset = $(this).offset().left + $(this).outerWidth();
                 };
 
                 $('.hero').fadeOut();

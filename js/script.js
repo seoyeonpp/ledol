@@ -46,6 +46,11 @@ $(function () {
                 'scroll': false,
                 containment: 'parent',
                 cancel: ".outline",
+                snap: ".outline",
+                snapMode: "inner",
+                snapTolerance: 50,
+                stack: ".draggable",
+                opacity: 0.7,
             });
 
             $('.scrolling .outline').droppable({
@@ -103,35 +108,68 @@ $(function () {
             $('body').removeAttr('style');
         },
         pinBtn: function () {
+            // 핀 클릭 시 실행
+            const oldOffset = $('.hero').offset().left + $('.hero').outerWidth();
+
             $('.pin_zone button').on('click', function () {
                 const thisIndex = $(this).index(),
                     country = $(this).attr('data-country'),
                     slideBox = $('.info_zone .country').eq(thisIndex).find('.slider'),
-                    topArr = [703, 550, 714, 588, 510, 556, 538, 674, 729],
-                    rightArr = [507, 480, 463, 307, 950, 920, 970, 403, 393];
-                console.log(country);
+                    topArr = [39.7917, 28.7778, 40.2083, 32.4167, 28.6944, 32, 30.6389, 37, 41.2917],
+                    rightArr = [23.7361, 23.5556, 21.8194, 12.8472, 48.9722, 47.8889, 50.3611, 18, 17.125],
+                    currentOffset = $(this).offset().left + $(this).outerWidth();
+
+
+
+                //현재의 left좌표가 클릭한곳의 left좌표보다 작으면 비행기가 rotateY(180deg)
+                console.log(`처음좌표는 : ${oldOffset}`); //처음의 레돌이좌표
+                console.log(`클릭한 좌표는 : ${currentOffset}`); //left 좌표
+                if (oldOffset < currentOffset) {
+                    $('.plane').css({ 'transform': 'rotateY(180deg)' });
+                } else {
+                    $('.plane').attr({ 'transform': 'rotateY(360deg)' });
+                };
 
                 $('.hero').fadeOut();
                 if (thisIndex == 3 || thisIndex == 7) {
-                    $('.ship').fadeIn().animate({ 'top': topArr[thisIndex] + 'px', 'right': rightArr[thisIndex] + 'px' }, 1000);
+                    $('.ship').fadeIn().animate({ 'top': topArr[thisIndex] + 'vw', 'right': rightArr[thisIndex] + 'vw' }, 1000);
+                    $('.plane').animate({ 'top': topArr[thisIndex] + 'vw', 'right': rightArr[thisIndex] + 'vw' }, 1000);
+                    setTimeout(() => {
+                        $(this).fadeOut();
+                        $('.hero').fadeIn().css({ 'top': topArr[thisIndex] + 'vw', 'right': rightArr[thisIndex] + 'vw' });
+                    }, 1200);
                 } else {
-                    $('.plane').fadeIn().animate({ 'top': topArr[thisIndex] + 'px', 'right': rightArr[thisIndex] + 'px' }, 1000);
+                    $('.plane').fadeIn().animate({ 'top': topArr[thisIndex] + 'vw', 'right': rightArr[thisIndex] + 'vw' }, 1000);
+                    $('.ship').animate({ 'top': topArr[thisIndex] + 'vw', 'right': rightArr[thisIndex] + 'vw' }, 1000);
+                    setTimeout(() => {
+                        $(this).fadeOut();
+                        $('.hero').fadeIn().css({ 'top': topArr[thisIndex] + 'vw', 'right': rightArr[thisIndex] + 'vw' });
+                    }, 1200);
                 };
                 setTimeout(() => {
                     $('.info_zone .country').eq(thisIndex).fadeIn().siblings().fadeOut();
+                    $('.pin_zone button').eq(thisIndex).siblings().css({ 'pointer-events': 'none' }); //팝업이 떠있을땐 다른 버튼 클릭 금지
+                    $('.ship').fadeOut();
+                    $('.plane').fadeOut();
                     if ($('.info_zone .country').hasClass(country) == true) {
                         lego.slider(slideBox);
                     };
                 }, 1000);
             });
+            //닫기버튼 클릭 시 실행
             $('.info_zone .country button.close').on('click', function () {
                 $('.ship').fadeOut();
                 $('.plane').fadeOut();
+                $('.hero').fadeOut();
                 $('.info_zone .country').fadeOut();
+                setTimeout(() => {
+                    $('.pin_zone button').attr('style', "display: block;");
+                    $('.pin_zone button').css({ 'pointer-events': 'auto' });
+                }, 200);
             });
         },
         slider: function (current) {
-            $(current).slick({
+            $(current).not('.slick-initialized').slick({
                 dots: false,
                 infinite: true,
                 speed: 300,
@@ -160,7 +198,7 @@ $(function () {
             putTogether: function () {
                 if (this.wT < $('.scrolling').offset().top - 501) {
                     $('.scrolling p:not(:last-child)').css({ 'opacity': '0', 'transform': 'translateX(-200px)' });
-                    $('.scrolling h2').css({ 'opacity': '0', 'transform': 'translateY(-300px)' });
+                    $('.scrolling h2').css({ 'opacity': '0', 'transform': 'translateY(-100px)' });
                 } else if (this.wT > $('.scrolling').offset().top - 500) {
                     $('.scrolling h2').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
                     setTimeout(() => {
@@ -222,12 +260,16 @@ $(function () {
                 }
             },
             map: function () {
-                if (this.wT > $('.pick_country').offset().top - 100) {
-                    // $('.pick_country .map img').css({ 'transform': 'translateZ(-20px) translate(0px, 60px)' });
+                if (this.wT < $('.pick_country').offset().top - 101) {
+                    $('.pick_country .map img').css({ 'transform': 'rotateX(10deg)' });
+                    $('.hero').stop().fadeOut();
+                    $('.pin_zone').stop().fadeOut();
+                } else if (this.wT > $('.pick_country').offset().top - 100) {
+                    $('.pick_country .map img').css({ 'transform': 'rotateX(0deg)' });
                     setTimeout(() => {
                         $('.hero').fadeIn();
                         $('.pin_zone').fadeIn();
-                    }, 500)
+                    }, 1000);
                 };
             },
             footer: function () {

@@ -87,6 +87,7 @@ $green : #028640;
     opacity: 0;
     visibility: hidden;
     overflow-x: hidden;
+    transition: opacity 1s;
     main{
         height: 100%;
         section{

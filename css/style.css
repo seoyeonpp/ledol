@@ -194,6 +194,8 @@ a {
   opacity: 0;
   visibility: hidden;
   overflow-x: hidden;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
 }
 
 #wrap main {

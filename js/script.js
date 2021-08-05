@@ -150,7 +150,7 @@ $(function () {
         },
         scrollEnable: function () {
             const scrollPosition = Math.abs($('#wrap').css('top').split('px')[0]);
-            $('#wrap').removeAttr('style').attr('style', 'display: block;');
+            $('#wrap').removeAttr('style').attr('style', 'opacity: 1; visibility: visible; height: auto; overflow-y: auto;');
             $(window).scrollTop(scrollPosition);
             $('body').removeAttr('style');
         },

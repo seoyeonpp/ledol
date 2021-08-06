@@ -248,34 +248,7 @@ $(function () {
                     setTimeout(() => {
                         $('.scrolling p:not(:last-child)').css({ 'opacity': '1', 'transform': 'translateX(0px)' });
                     }, 500);
-                }
-
-
-                // if (this.wT < 1500) {
-                //     this.head.css({ 'opacity': '0', 'left': '0' });
-                //     this.upper_body.css({ 'opacity': '0', 'left': '0' });
-                //     this.lower_body.css({ 'opacity': '0', 'left': '0' });
-
-                // } else if (this.wT < 2500) {
-                //     this.head.css({ 'opacity': '1', 'left': '50%' });
-                //     $('.scrolling p').removeClass('on');
-                // } else if (this.wT < 3600) {
-                //     this.upper_body.css({ 'opacity': '1', 'left': '50%' });
-                //     $('.scrolling p').removeClass('on');
-                // } else if (this.wT < this.scrollSection) {
-                //     this.lower_body.css({ 'opacity': '1', 'left': '50%' });
-                //     if (this.wT > 4200) {
-                //         $('.scrolling p').addClass('on');
-                //     }
-                // } else {
-                //     this.head.css({ 'opacity': '0', 'left': '0' });
-                //     this.upper_body.css({ 'opacity': '0', 'left': '0' });
-                //     this.lower_body.css({ 'opacity': '0', 'left': '0' });
-                //     setTimeout(() => {
-                //         $('.scrolling p').removeClass('on');
-                //     }, 500);
-                // }
-
+                };
 
             },
             introduce: function () {
@@ -301,7 +274,7 @@ $(function () {
                     setTimeout(() => {
                         $('.advice_memo').addClass('memo');
                     }, 1200)
-                }
+                };
             },
             map: function () {
                 if (this.wT < $('.pick_country').offset().top - 101) {

@@ -164,8 +164,7 @@ $(function () {
                     slideBox = $('.info_zone .country').eq(thisIndex).find('.slider'),
                     topArr = [39.7917, 28.7778, 40.2083, 32.4167, 28.6944, 32, 30.6389, 37, 41.2917],
                     rightArr = [23.7361, 23.5556, 21.8194, 12.8472, 48.9722, 47.8889, 50.3611, 18, 17.125],
-                    shipArr = ['japan', 'taiwan', 'philippine'],
-                    oldArr = ['hero', 'japan', 'taiwan', 'philippine', 'vietnam'];
+                    shipArr = ['hero', 'japan', 'taiwan', 'philippine', 'vietnam'];
                 let currentOffset = $(this).offset().left + $(this).outerWidth(),
                     country = $(this).attr('data-country');
 
@@ -188,7 +187,7 @@ $(function () {
                 console.log(`이전 나라는 ${oldCountry}`);
                 console.log(`현재 나라는 ${country}`);
 
-                if ($.inArray(oldCountry, oldArr) != -1 && $.inArray(country, shipArr) != -1) {//배열에 있는값일때 index순서 반환, 없을때 -1 반환
+                if ($.inArray(oldCountry, shipArr) != -1 && $.inArray(country, shipArr) != -1) {//배열에 있는값일때 index순서 반환, 없을때 -1 반환
                     //배로이동
                     $('.hero').css({ 'opacity': '0' });
                     $('.ship').fadeIn().animate({ 'top': topArr[thisIndex] + 'vw', 'right': rightArr[thisIndex] + 'vw' }, 1000);

@@ -162,78 +162,53 @@ $(function () {
             $('.pin_zone button').on('click', function () {
                 const thisIndex = $(this).index(),
                     slideBox = $('.info_zone .country').eq(thisIndex).find('.slider'),
-                    topArr = [39.7917, 28.7778, 40.2083, 32.4167, 28.6944, 32, 30.6389, 37, 41.2917],
-                    rightArr = [23.7361, 23.5556, 21.8194, 12.8472, 48.9722, 47.8889, 50.3611, 18, 17.125],
+                    topArr = [41.7917, 29.7778, 41.2083, 34.4167, 29.6944, 33, 31.6389, 39, 42.5],
+                    rightArr = [23.7361, 23.5556, 21.8194, 12.8472, 48.9722, 47.8889, 50.3611, 18, 17.5],
                     shipArr = ['hero', 'japan', 'taiwan', 'philippine', 'vietnam'];
                 let currentOffset = $(this).offset().left + $(this).outerWidth(),
                     country = $(this).attr('data-country');
 
                 //클릭한 위치에 따라 이미지 반전
-                // console.log(`이전 좌표는 : ${oldOffset}`);
-                // console.log(`클릭한 좌표는 : ${currentOffset}`);
                 if (oldOffset > currentOffset) {
-                    $('.plane').css({ 'transform': 'rotateY(180deg)' });
-                    $('.ship').css({ 'transform': 'rotateY(180deg)' });
-                    oldOffset = currentOffset;
-                    currentOffset = $(this).offset().left + $(this).outerWidth();
+                    $('.hero').css({ 'transform': 'rotateY(180deg)' });
                 } else if (oldOffset < currentOffset) {
-                    $('.plane').css({ 'transform': 'rotateY(0deg)' });
-                    $('.ship').css({ 'transform': 'rotateY(0deg)' });
-                    oldOffset = currentOffset;
-                    currentOffset = $(this).offset().left + $(this).outerWidth();
+                    $('.hero').css({ 'transform': 'rotateY(0deg)' });
                 };
+                oldOffset = currentOffset;
+                currentOffset = $(this).offset().left + $(this).outerWidth();
 
-                //배인지 비행기인지 가려내는 로직
-                console.log(`이전 나라는 ${oldCountry}`);
-                console.log(`현재 나라는 ${country}`);
-
+                //배로 이동인지 비행기로 이동인지 확인
                 if ($.inArray(oldCountry, shipArr) != -1 && $.inArray(country, shipArr) != -1) {//배열에 있는값일때 index순서 반환, 없을때 -1 반환
-                    //배로이동
-                    $('.hero').css({ 'opacity': '0' });
-                    $('.ship').fadeIn().animate({ 'top': topArr[thisIndex] + 'vw', 'right': rightArr[thisIndex] + 'vw' }, 1000);
-                    $('.plane').animate({ 'top': topArr[thisIndex] + 'vw', 'right': rightArr[thisIndex] + 'vw' }, 1000);
-                    setTimeout(() => {
-                        $(this).fadeOut();
-                        $('.hero').css({ 'top': topArr[thisIndex] + 'vw', 'right': rightArr[thisIndex] + 'vw', 'opacity': '1' });
-                    }, 1200);
-
-                    oldCountry = country;
-                    country = $(this).attr('data-country');
-
+                    $('.hero').attr('src', 'image/ship.png');
                 } else {
-                    //비행기로 이동
-                    $('.hero').css({ 'opacity': '0' });
-                    $('.plane').fadeIn().animate({ 'top': topArr[thisIndex] + 'vw', 'right': rightArr[thisIndex] + 'vw' }, 1000);
-                    $('.ship').animate({ 'top': topArr[thisIndex] + 'vw', 'right': rightArr[thisIndex] + 'vw' }, 1000);
-                    setTimeout(() => {
-                        $(this).fadeOut();
-                        $('.hero').css({ 'top': topArr[thisIndex] + 'vw', 'right': rightArr[thisIndex] + 'vw', 'opacity': '1' });
-                    }, 1200);
-
-                    oldCountry = country;
-                    country = $(this).attr('data-country');
+                    $('.hero').attr('src', 'image/plane.png');
                 };
+                $('.hero').animate({ 'top': topArr[thisIndex] + 'vw', 'right': rightArr[thisIndex] + 'vw' }, 1000);
 
+                oldCountry = country;
+                country = $(this).attr('data-country');
+
+                // 클릭 후 핀 사라지고 레돌이 출현
+                setTimeout(() => {
+                    $(this).fadeOut();
+                    $('.hero').attr('src', 'image/map_move.png');
+                }, 1000);
 
                 //1초후 팝업 실행
                 setTimeout(() => {
                     $('.info_zone .country').eq(thisIndex).fadeIn().siblings().fadeOut();
-                    $('.pin_zone button').eq(thisIndex).siblings().css({ 'pointer-events': 'none' }); //팝업이 떠있을땐 다른 버튼 클릭 금지
-                    $('.ship').fadeOut();
-                    $('.plane').fadeOut();
+                    $('.pin_zone button').eq(thisIndex).siblings().css({ 'pointer-events': 'none' });
                     if ($('.info_zone .country').hasClass(country) == true) {
                         lego.slider(slideBox);
                     };
                 }, 1000);
             });
+
             //닫기버튼 클릭 시 실행
             $('.info_zone .country button.close').on('click', function () {
-                $('.ship').fadeOut();
-                $('.plane').fadeOut();
                 $('.info_zone .country').fadeOut();
                 setTimeout(() => {
-                    $('.pin_zone button').attr('style', "display: block;");
-                    $('.pin_zone button').css({ 'pointer-events': 'auto' });
+                    $('.pin_zone button').attr('style', "display: block;").css({ 'pointer-events': 'auto' });
                 }, 200);
             });
         },

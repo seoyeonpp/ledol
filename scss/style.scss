@@ -463,20 +463,6 @@ $green : #028640;
                         width: 3.7778vw;
                         z-index: 20;
                     }
-                    &.plane{
-                        top: 31.5833vw;
-                        right: 15.4444vw;
-                        width: 3.7778vw;
-                        display: none;
-                        z-index: 20;
-                    }
-                    &.ship{
-                        top: 31.5833vw;
-                        right: 15.4444vw;
-                        width: 3.7778vw;
-                        display: none;
-                        z-index: 20;
-                    }
                 }
                 .pin_zone{
                     display: none;
@@ -486,8 +472,8 @@ $green : #028640;
                         cursor: pointer;
                         position: absolute;
                         z-index: 10;
-                        width: 2.7778vw;
-                        height: 2.7778vw;
+                        width: 2vw;
+                        height: 2vw;
                         appearance: none;
                         outline: none;
                         border: 0;
@@ -504,40 +490,40 @@ $green : #028640;
                             transition: all 100ms ease-in;
                         }
                         &:nth-child(1){
-                            top: 39.7917vw;
+                            top: 41.7917vw;
                             right: 23.7361vw;
                         }
                         &:nth-child(2){
-                            top: 28.7778vw;
+                            top: 29.7778vw;
                             right: 23.5556vw;
                         }
                         &:nth-child(3){
-                            top: 40.2083vw;
+                            top: 41.2083vw;
                             right: 21.8194vw;
                         }
                         &:nth-child(4){
-                            top: 32.4167vw;
+                            top: 34.4167vw;
                             right: 12.8472vw;
                         }
                         &:nth-child(5){
-                            top: 28.6944vw;
+                            top: 29.6944vw;
                             right: 48.9722vw;
                         }
                         &:nth-child(6){
-                            top: 32vw;
+                            top: 33vw;
                             right: 47.8889vw;
                         }
                         &:nth-child(7){
-                            top: 30.6389vw;
+                            top: 31.6389vw;
                             right: 50.3611vw;
                         }
                         &:nth-child(8){
-                            top: 37vw;
+                            top: 39vw;
                             right: 18vw;
                         }
                         &:nth-child(9){
-                            top: 41.2917vw;
-                            right: 17.125vw;
+                            top: 42.5vw;
+                            right: 17.5vw;
                         }
                     }
                 }

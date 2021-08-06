@@ -673,22 +673,6 @@ a {
   z-index: 20;
 }
 
-#wrap main section.pick_country img.plane {
-  top: 31.5833vw;
-  right: 15.4444vw;
-  width: 3.7778vw;
-  display: none;
-  z-index: 20;
-}
-
-#wrap main section.pick_country img.ship {
-  top: 31.5833vw;
-  right: 15.4444vw;
-  width: 3.7778vw;
-  display: none;
-  z-index: 20;
-}
-
 #wrap main section.pick_country .pin_zone {
   display: none;
   width: 100%;
@@ -699,8 +683,8 @@ a {
   cursor: pointer;
   position: absolute;
   z-index: 10;
-  width: 2.7778vw;
-  height: 2.7778vw;
+  width: 2vw;
+  height: 2vw;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -726,48 +710,48 @@ a {
 }
 
 #wrap main section.pick_country .pin_zone button:nth-child(1) {
-  top: 39.7917vw;
+  top: 41.7917vw;
   right: 23.7361vw;
 }
 
 #wrap main section.pick_country .pin_zone button:nth-child(2) {
-  top: 28.7778vw;
+  top: 29.7778vw;
   right: 23.5556vw;
 }
 
 #wrap main section.pick_country .pin_zone button:nth-child(3) {
-  top: 40.2083vw;
+  top: 41.2083vw;
   right: 21.8194vw;
 }
 
 #wrap main section.pick_country .pin_zone button:nth-child(4) {
-  top: 32.4167vw;
+  top: 34.4167vw;
   right: 12.8472vw;
 }
 
 #wrap main section.pick_country .pin_zone button:nth-child(5) {
-  top: 28.6944vw;
+  top: 29.6944vw;
   right: 48.9722vw;
 }
 
 #wrap main section.pick_country .pin_zone button:nth-child(6) {
-  top: 32vw;
+  top: 33vw;
   right: 47.8889vw;
 }
 
 #wrap main section.pick_country .pin_zone button:nth-child(7) {
-  top: 30.6389vw;
+  top: 31.6389vw;
   right: 50.3611vw;
 }
 
 #wrap main section.pick_country .pin_zone button:nth-child(8) {
-  top: 37vw;
+  top: 39vw;
   right: 18vw;
 }
 
 #wrap main section.pick_country .pin_zone button:nth-child(9) {
-  top: 41.2917vw;
-  right: 17.125vw;
+  top: 42.5vw;
+  right: 17.5vw;
 }
 
 #wrap main section.pick_country .info_zone div.country {

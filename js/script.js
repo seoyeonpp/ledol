@@ -229,15 +229,21 @@ $(function () {
 
         scrollEv = {
             wT: $(window).scrollTop(),
-            scrollSection: $('section.scrolling').height(),
-            intro: $('section.intro').offset().top,
-            conwrap: $('.intro .contents_wrap'),
             init: function () {
-                scrollEv.putTogether();
-                scrollEv.introduce();
-                scrollEv.clothArea();
-                scrollEv.map();
-                scrollEv.footer();
+                this.onScroll();
+            },
+            onScroll: function () {
+                if (this.wT < $('.intro').offset().top - 200) {
+                    this.putTogether();
+                } else if (this.wT < $('.cloth_change').offset().top - 200) {
+                    this.introduce();
+                } else if (this.wT < $('.pick_country').offset().top - 200) {
+                    this.clothArea();
+                } else if (this.wT < $('footer').offset().top - 600) {
+                    this.map();
+                } else {
+                    this.footer();
+                };
             },
             putTogether: function () {
                 if (this.wT < $('.scrolling').offset().top - 501) {
@@ -252,12 +258,12 @@ $(function () {
 
             },
             introduce: function () {
-                if (this.wT > this.intro - 500) {
+                if (this.wT > $('.intro').offset().top - 500) {
                     $('.intro h2').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
-                    this.conwrap.animate({ width: '100%' }, 1000);
+                    $('.intro .contents_wrap').animate({ width: '100%' }, 1000);
                     setTimeout(() => {
-                        scrollEv.conwrap.find('img').css({ 'opacity': '1', 'transform': 'translateX(0px)' });
-                        scrollEv.conwrap.find('p').css({ 'opacity': '1', 'transform': 'translateX(0px)' });
+                        $('.intro .contents_wrap').find('img').css({ 'opacity': '1', 'transform': 'translateX(0px)' });
+                        $('.intro .contents_wrap').find('p').css({ 'opacity': '1', 'transform': 'translateX(0px)' });
                     }, 1000);
                 };
             },

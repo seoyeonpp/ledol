@@ -215,47 +215,6 @@ $green : #028640;
                     @include font("Tourney",48px,$red);
                     display: none;
                 }
-                // position: relative;
-                // height: 500vh;
-                // img{
-                //     position: fixed;
-                //     left: 0;
-                //     transform: translateX(-50%);
-                //     transition: all 0.5s;
-                //     &.head{
-                //         opacity: 0;
-                //         top: 100px;
-                //         height: 166px;
-                //     }
-                //     &.upper_body{ // 163px차이
-                //         opacity: 0;
-                //         top: 263px;
-                //         height: 257px;
-                //     }
-                //     &.lower_body{// 185px차이
-                //         opacity: 0;
-                //         top: 448px;
-                //         height: 235px;
-                //     }
-                // }
-                // p{
-                //     @include font("Tourney",100px,$yellow);
-                //     display: inline-block;
-                //     padding: 10px;
-                //     border-radius: 20px;
-                //     background: rgba(0, 0, 0, 0.8);
-                //     position: absolute;
-                //     left: 50%;
-                //     bottom: 600px;
-                //     transform: translateX(-50%) translateY(100px);
-                //     z-index: 10;
-                //     opacity: 0;
-                //     transition: all 1s;
-                // }
-                // p.on{
-                //     transform: translateX(-50%) translateY(0px);
-                //     opacity: 1;
-                // }
             }
             &.intro{
                 background-attachment: fixed;
@@ -490,39 +449,39 @@ $green : #028640;
                             transition: all 100ms ease-in;
                         }
                         &:nth-child(1){
-                            top: 41.7917vw;
+                            top: 43.7917vw;
                             right: 23.7361vw;
                         }
                         &:nth-child(2){
-                            top: 29.7778vw;
+                            top: 30.7778vw;
                             right: 23.5556vw;
                         }
                         &:nth-child(3){
-                            top: 41.2083vw;
+                            top: 42.2083vw;
                             right: 21.8194vw;
                         }
                         &:nth-child(4){
-                            top: 34.4167vw;
+                            top: 36.4167vw;
                             right: 12.8472vw;
                         }
                         &:nth-child(5){
-                            top: 29.6944vw;
+                            top: 31.6944vw;
                             right: 48.9722vw;
                         }
                         &:nth-child(6){
-                            top: 33vw;
+                            top: 35vw;
                             right: 47.8889vw;
                         }
                         &:nth-child(7){
-                            top: 31.6389vw;
+                            top: 33.6389vw;
                             right: 50.3611vw;
                         }
                         &:nth-child(8){
-                            top: 39vw;
+                            top: 41vw;
                             right: 18vw;
                         }
                         &:nth-child(9){
-                            top: 42.5vw;
+                            top: 44.5vw;
                             right: 17.5vw;
                         }
                     }

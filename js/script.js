@@ -34,7 +34,6 @@ $(function () {
             }, 3000);
         },
         drag: function () {
-            // 마우스로 드래그 후 좌표가 맞는곳에 넣으면 complete! 텍스트 fadeIn
             let isRevert = true;
 
             $('.scrolling img').draggable({
@@ -162,7 +161,7 @@ $(function () {
             $('.pin_zone button').on('click', function () {
                 const thisIndex = $(this).index(),
                     slideBox = $('.info_zone .country').eq(thisIndex).find('.slider'),
-                    topArr = [41.7917, 29.7778, 41.2083, 34.4167, 29.6944, 33, 31.6389, 39, 42.5],
+                    topArr = [43.7917, 30.7778, 42.2083, 36.4167, 31.6944, 35, 33.6389, 41, 44.5],
                     rightArr = [23.7361, 23.5556, 21.8194, 12.8472, 48.9722, 47.8889, 50.3611, 18, 17.5],
                     shipArr = ['hero', 'japan', 'taiwan', 'philippine', 'vietnam'];
                 let currentOffset = $(this).offset().left + $(this).outerWidth(),
@@ -225,6 +224,13 @@ $(function () {
 
 
     //레고 스크롤 이벤트
+    const homeOT = $('.home').offset().top,
+        scrollingOT = $('.scrolling').offset().top,
+        introOT = $('.intro').offset().top,
+        cloth_changeOT = $('.cloth_change').offset().top,
+        pick_countryOT = $('.pick_country').offset().top,
+        footerOT = $('footer').offset().top;
+
     $(window).scroll(function () {
 
         scrollEv = {
@@ -233,20 +239,24 @@ $(function () {
                 this.onScroll();
             },
             onScroll: function () {
-                if (this.wT < $('.intro').offset().top - 200) {
+                if (this.wT > homeOT - 200) {
                     this.putTogether();
-                } else if (this.wT < $('.cloth_change').offset().top - 200) {
+                };
+                if (this.wT > introOT - 200) {
                     this.introduce();
-                } else if (this.wT < $('.pick_country').offset().top - 200) {
+                };
+                if (this.wT > cloth_changeOT - 200) {
                     this.clothArea();
-                } else if (this.wT < $('footer').offset().top - 600) {
+                };
+                if (this.wT > pick_countryOT - 200) {
                     this.map();
-                } else {
+                };
+                if(this.wT > footerOT - 600){
                     this.footer();
                 };
             },
             putTogether: function () {
-                if (this.wT < $('.scrolling').offset().top - 501) {
+                if (this.wT < scrollingOT - 501) {
                     $('.scrolling p:not(:last-child)').css({ 'opacity': '0', 'transform': 'translateX(-200px)' });
                     $('.scrolling h2').css({ 'opacity': '0', 'transform': 'translateY(-100px)' });
                 } else if (this.wT > $('.scrolling').offset().top - 500) {
@@ -258,36 +268,32 @@ $(function () {
 
             },
             introduce: function () {
-                if (this.wT > $('.intro').offset().top - 500) {
-                    $('.intro h2').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
-                    $('.intro .contents_wrap').animate({ width: '100%' }, 1000);
-                    setTimeout(() => {
-                        $('.intro .contents_wrap').find('img').css({ 'opacity': '1', 'transform': 'translateX(0px)' });
-                        $('.intro .contents_wrap').find('p').css({ 'opacity': '1', 'transform': 'translateX(0px)' });
-                    }, 1000);
-                };
+                $('.intro h2').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
+                $('.intro .contents_wrap').animate({ width: '100%' }, 1000);
+                setTimeout(() => {
+                    $('.intro .contents_wrap').find('img').css({ 'opacity': '1', 'transform': 'translateX(0px)' });
+                    $('.intro .contents_wrap').find('p').css({ 'opacity': '1', 'transform': 'translateX(0px)' });
+                }, 1000);
             },
             clothArea: function () {
-                if (this.wT > $('.cloth_change').offset().top - 500) {
-                    $('.cloth_change h2').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
-                    setTimeout(() => {
-                        $('.cloth_color_wrap > svg').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
-                        $('.cloth_color_wrap .click').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
-                    }, 300)
-                    setTimeout(() => {
-                        $('.cloth_color_wrap > .color_zone').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
-                    }, 600)
-                    setTimeout(() => {
-                        $('.advice_memo').addClass('memo');
-                    }, 1200)
-                };
+                $('.cloth_change h2').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
+                setTimeout(() => {
+                    $('.cloth_color_wrap > svg').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
+                    $('.cloth_color_wrap .click').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
+                }, 300)
+                setTimeout(() => {
+                    $('.cloth_color_wrap > .color_zone').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
+                }, 600)
+                setTimeout(() => {
+                    $('.advice_memo').addClass('memo');
+                }, 1200)
             },
             map: function () {
-                if (this.wT < $('.pick_country').offset().top - 101) {
+                if (this.wT < pick_countryOT - 101) {
                     $('.pick_country .map img').css({ 'transform': 'rotateX(10deg)' });
                     $('.hero').stop().fadeOut();
                     $('.pin_zone').stop().fadeOut();
-                } else if (this.wT > $('.pick_country').offset().top - 100) {
+                } else if (this.wT > pick_countryOT - 100) {
                     $('.pick_country .map img').css({ 'transform': 'rotateX(0deg)' });
                     setTimeout(() => {
                         $('.hero').fadeIn();
@@ -296,11 +302,11 @@ $(function () {
                 };
             },
             footer: function () {
-                if (this.wT < $('footer').offset().top - 500) {
+                if (this.wT < footerOT - 500) {
                     $('footer').css({ 'height': '500px' });
                     $('footer h3').css({ 'opacity': '0', 'transform': 'translateY(100px)' });
                     $('footer p').css({ 'opacity': '0', 'transform': 'translateY(100px)' });
-                } else if (this.wT >= $('footer').offset().top - 500) {
+                } else if (this.wT >= footerOT - 500) {
                     $('footer').css({ 'height': '100vh' });
                     setTimeout(() => {
                         $('footer h3').css({ 'opacity': '1', 'transform': 'translateY(0px)' });

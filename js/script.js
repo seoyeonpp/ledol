@@ -228,11 +228,9 @@ $(function () {
         scrollingOT = $('.scrolling').offset().top,
         introOT = $('.intro').offset().top,
         cloth_changeOT = $('.cloth_change').offset().top,
-        pick_countryOT = $('.pick_country').offset().top,
-        footerOT = $('footer').offset().top;
+        pick_countryOT = $('.pick_country').offset().top;
 
     $(window).scroll(function () {
-
         scrollEv = {
             wT: $(window).scrollTop(),
             init: function () {
@@ -251,7 +249,7 @@ $(function () {
                 if (this.wT > pick_countryOT - 200) {
                     this.map();
                 };
-                if(this.wT > footerOT - 600){
+                if(this.wT > $('footer').offset().top - 600){
                     this.footer();
                 };
             },
@@ -302,11 +300,11 @@ $(function () {
                 };
             },
             footer: function () {
-                if (this.wT < footerOT - 500) {
+                if (this.wT < $('footer').offset().top - 500) {
                     $('footer').css({ 'height': '500px' });
                     $('footer h3').css({ 'opacity': '0', 'transform': 'translateY(100px)' });
                     $('footer p').css({ 'opacity': '0', 'transform': 'translateY(100px)' });
-                } else if (this.wT >= footerOT - 500) {
+                } else if (this.wT >= $('footer').offset().top - 500) {
                     $('footer').css({ 'height': '100vh' });
                     setTimeout(() => {
                         $('footer h3').css({ 'opacity': '1', 'transform': 'translateY(0px)' });

@@ -261,6 +261,7 @@ $(function () {
                 };
                 if (this.wT > pick_countryOT - 200) {
                     this.map();
+                    this.footer();
                 };
                 if(this.wT > $('footer').offset().top - 800){
                     this.footer();

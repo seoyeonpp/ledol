@@ -176,7 +176,7 @@ $(function () {
                     }else{
                         $('.hero').css({ 'transform': 'rotateY(180deg) rotateZ(30deg)'});
                     }
-                } else if (oldOffset < currentOffset) { 
+                } else if (oldOffset < currentOffset) {
                     if(oldZ > currentZ){
                         $('.hero').css({ 'transform': 'rotateY(0deg) rotateZ(-30deg)'});
                     }else{
@@ -263,7 +263,7 @@ $(function () {
                     this.map();
                     this.footer();
                 };
-                if(this.wT > $('footer').offset().top - 800){
+                if(this.wT > $('footer').offset().top - 600){
                     this.footer();
                 };
             },
@@ -314,11 +314,11 @@ $(function () {
                 };
             },
             footer: function () {
-                if (this.wT < $('footer').offset().top - 800) {
+                if (this.wT < $('footer').offset().top - 600) {
                     $('footer').css({ 'height': '500px' });
                     $('footer h3').css({ 'opacity': '0', 'transform': 'translateY(100px)' });
                     $('footer p').css({ 'opacity': '0', 'transform': 'translateY(100px)' });
-                } else if (this.wT >= $('footer').offset().top - 800) {
+                } else if (this.wT >= $('footer').offset().top - 600) {
                     $('footer').css({ 'height': '100vh' });
                     setTimeout(() => {
                         $('footer h3').css({ 'opacity': '1', 'transform': 'translateY(0px)' });

@@ -155,26 +155,39 @@ $(function () {
         },
         pinBtn: function () {
             let oldOffset = $('.hero').offset().left + $('.hero').outerWidth(),
+                oldZ =  $('.hero').position().top,
                 oldCountry = 'hero';
 
             // 핀 클릭 시 실행
             $('.pin_zone button').on('click', function () {
                 const thisIndex = $(this).index(),
                     slideBox = $('.info_zone .country').eq(thisIndex).find('.slider'),
-                    topArr = [43.7917, 30.7778, 42.2083, 36.4167, 31.6944, 35, 33.6389, 41, 44.5],
-                    rightArr = [23.7361, 23.5556, 21.8194, 12.8472, 48.9722, 47.8889, 50.3611, 18, 17.5],
+                    topArr = [43.7917, 28.7778, 40.2083, 34.4167, 29.6944, 33, 31.6389, 39, 42.5],
+                    rightArr = [23.7361, 23.5556, 21.8194, 12.8472, 48.9722, 47.8889, 51.3611, 18, 17.5],
                     shipArr = ['hero', 'japan', 'taiwan', 'philippine', 'vietnam'];
                 let currentOffset = $(this).offset().left + $(this).outerWidth(),
+                    currentZ = $(this).position().top,
                     country = $(this).attr('data-country');
 
                 //클릭한 위치에 따라 이미지 반전
                 if (oldOffset > currentOffset) {
-                    $('.hero').css({ 'transform': 'rotateY(180deg)' });
-                } else if (oldOffset < currentOffset) {
-                    $('.hero').css({ 'transform': 'rotateY(0deg)' });
+                    if(oldZ > currentZ){
+                        $('.hero').css({ 'transform': 'rotateY(180deg) rotateZ(-30deg)'});
+                    }else{
+                        $('.hero').css({ 'transform': 'rotateY(180deg) rotateZ(30deg)'});
+                    }
+                } else if (oldOffset < currentOffset) { 
+                    if(oldZ > currentZ){
+                        $('.hero').css({ 'transform': 'rotateY(0deg) rotateZ(-30deg)'});
+                    }else{
+                        $('.hero').css({ 'transform': 'rotateY(0deg) rotateZ(30deg)'});
+                    }
                 };
+
                 oldOffset = currentOffset;
                 currentOffset = $(this).offset().left + $(this).outerWidth();
+                oldZ = currentZ;
+                currentZ = $(this).position().top;
 
                 //배로 이동인지 비행기로 이동인지 확인
                 if ($.inArray(oldCountry, shipArr) != -1 && $.inArray(country, shipArr) != -1) {//배열에 있는값일때 index순서 반환, 없을때 -1 반환
@@ -190,7 +203,7 @@ $(function () {
                 // 클릭 후 핀 사라지고 레돌이 출현
                 setTimeout(() => {
                     $(this).fadeOut();
-                    $('.hero').attr('src', 'image/map_move.png');
+                    $('.hero').attr('src', 'image/map_move.png').css({ 'transform': 'rotateZ(0deg)'});
                 }, 1000);
 
                 //1초후 팝업 실행
@@ -249,7 +262,7 @@ $(function () {
                 if (this.wT > pick_countryOT - 200) {
                     this.map();
                 };
-                if(this.wT > $('footer').offset().top - 600){
+                if(this.wT > $('footer').offset().top - 800){
                     this.footer();
                 };
             },
@@ -300,11 +313,11 @@ $(function () {
                 };
             },
             footer: function () {
-                if (this.wT < $('footer').offset().top - 500) {
+                if (this.wT < $('footer').offset().top - 800) {
                     $('footer').css({ 'height': '500px' });
                     $('footer h3').css({ 'opacity': '0', 'transform': 'translateY(100px)' });
                     $('footer p').css({ 'opacity': '0', 'transform': 'translateY(100px)' });
-                } else if (this.wT >= $('footer').offset().top - 500) {
+                } else if (this.wT >= $('footer').offset().top - 800) {
                     $('footer').css({ 'height': '100vh' });
                     setTimeout(() => {
                         $('footer h3').css({ 'opacity': '1', 'transform': 'translateY(0px)' });

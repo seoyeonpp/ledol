@@ -91,7 +91,7 @@ $green : #028640;
     main{
         height: 100%;
         section{
-            height: 130vh;
+            height: 100vh;
             h2{
                 @include font('GmarketSansBold',36px,$black);
                 text-align: center;
@@ -399,6 +399,7 @@ $green : #028640;
                 position: relative;
                 background-attachment: fixed;
                 padding-top: 100px;
+                height: 110vh;
                 p{
                     font-size: 28px;
                     position: relative;
@@ -421,6 +422,7 @@ $green : #028640;
                         right: 15.4444vw;
                         width: 3.7778vw;
                         z-index: 20;
+                        transform-origin: center;
                     }
                 }
                 .pin_zone{
@@ -453,35 +455,35 @@ $green : #028640;
                             right: 23.7361vw;
                         }
                         &:nth-child(2){
-                            top: 30.7778vw;
+                            top: 28.7778vw;
                             right: 23.5556vw;
                         }
                         &:nth-child(3){
-                            top: 42.2083vw;
+                            top: 40.2083vw;
                             right: 21.8194vw;
                         }
                         &:nth-child(4){
-                            top: 36.4167vw;
+                            top: 34.4167vw;
                             right: 12.8472vw;
                         }
                         &:nth-child(5){
-                            top: 31.6944vw;
+                            top: 29.6944vw;
                             right: 48.9722vw;
                         }
                         &:nth-child(6){
-                            top: 35vw;
+                            top: 33vw;
                             right: 47.8889vw;
                         }
                         &:nth-child(7){
-                            top: 33.6389vw;
-                            right: 50.3611vw;
+                            top: 31.6389vw;
+                            right: 51.3611vw;
                         }
                         &:nth-child(8){
-                            top: 41vw;
+                            top: 39vw;
                             right: 18vw;
                         }
                         &:nth-child(9){
-                            top: 44.5vw;
+                            top: 42.5vw;
                             right: 17.5vw;
                         }
                     }
@@ -575,7 +577,9 @@ $green : #028640;
         background-size: auto;
         .footer_conts{
             width: 80vw;
-            margin: auto ;
+            margin: auto;
+            box-sizing: border-box;
+            padding-top: 100px;
             h3{
                 @include font("Tourney",86px,$white);
                 text-align: center;

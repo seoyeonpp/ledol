@@ -203,7 +203,7 @@ a {
 }
 
 #wrap main section {
-  height: 130vh;
+  height: 100vh;
 }
 
 #wrap main section h2 {
@@ -638,6 +638,7 @@ a {
   position: relative;
   background-attachment: fixed;
   padding-top: 100px;
+  height: 110vh;
 }
 
 #wrap main section.pick_country p {
@@ -671,6 +672,8 @@ a {
   right: 15.4444vw;
   width: 3.7778vw;
   z-index: 20;
+  -webkit-transform-origin: center;
+          transform-origin: center;
 }
 
 #wrap main section.pick_country .pin_zone {
@@ -715,42 +718,42 @@ a {
 }
 
 #wrap main section.pick_country .pin_zone button:nth-child(2) {
-  top: 30.7778vw;
+  top: 28.7778vw;
   right: 23.5556vw;
 }
 
 #wrap main section.pick_country .pin_zone button:nth-child(3) {
-  top: 42.2083vw;
+  top: 40.2083vw;
   right: 21.8194vw;
 }
 
 #wrap main section.pick_country .pin_zone button:nth-child(4) {
-  top: 36.4167vw;
+  top: 34.4167vw;
   right: 12.8472vw;
 }
 
 #wrap main section.pick_country .pin_zone button:nth-child(5) {
-  top: 31.6944vw;
+  top: 29.6944vw;
   right: 48.9722vw;
 }
 
 #wrap main section.pick_country .pin_zone button:nth-child(6) {
-  top: 35vw;
+  top: 33vw;
   right: 47.8889vw;
 }
 
 #wrap main section.pick_country .pin_zone button:nth-child(7) {
-  top: 33.6389vw;
-  right: 50.3611vw;
+  top: 31.6389vw;
+  right: 51.3611vw;
 }
 
 #wrap main section.pick_country .pin_zone button:nth-child(8) {
-  top: 41vw;
+  top: 39vw;
   right: 18vw;
 }
 
 #wrap main section.pick_country .pin_zone button:nth-child(9) {
-  top: 44.5vw;
+  top: 42.5vw;
   right: 17.5vw;
 }
 
@@ -864,6 +867,9 @@ a {
 #wrap footer .footer_conts {
   width: 80vw;
   margin: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-top: 100px;
 }
 
 #wrap footer .footer_conts h3 {

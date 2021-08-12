@@ -10,8 +10,7 @@ $(function () {
         init: function () {
             lego.pageLoading();
             lego.textAni();
-            lego.drag();
-            lego.colorChange();
+            lego.dragEv();
             lego.showPop();
             lego.pinBtn();
         },
@@ -33,10 +32,10 @@ $(function () {
                 this.$icon.css({ opacity: 1 });
             }, 3000);
         },
-        drag: function () {
+        dragEv: function () {
             let isRevert = true;
 
-            $('.scrolling img').draggable({
+            $('.putLego img').draggable({
                 'scroll': false,
                 containment: 'parent',
                 cancel: ".outline",
@@ -56,8 +55,7 @@ $(function () {
                     };
                 },
             });
-
-            $('.scrolling .outline_head').droppable({
+            $('.putLego .outline_head').droppable({
                 accept: ".head",
                 drop: function (e, ui) {
                     ui.draggable.position({
@@ -68,13 +66,28 @@ $(function () {
                             $(this).animate(pos, 200, 'linear');
                         }
                     })
-                    $('.scrolling .complete').fadeIn();
+                    $('.putLego .complete').fadeIn();
                     setTimeout(() => {
-                        $('.scrolling .complete').fadeOut();
+                        $('.putLego .complete').fadeOut();
                     }, 1000);
+                    //마지막으로 머리 조립 후, 컬러 픽커로 수정할 svg 이미지로 전환
+                    setTimeout(()=>{
+                        $('.putLego .head, .putLego .upper_body, .putLego .lower_body').fadeOut();
+                        $('#lego_cloth').fadeIn();
+                        lego.colorChange();
+                        $('.color_zone').css({
+                            'opacity': '1',
+                            'transform': 'translateY(0px)'
+                            
+                        });
+                        $('.putLego h2').text('레돌이 조립 완료!!! 이제 레돌이에게 어울리는 옷을 찾아주세요.');
+                        $('.putLego .explain').text('레돌이를 클릭해 색을 바꿔주세요!');
+                        $('.advice_memo').addClass('memo');
+
+                    },1200);
                 },
             });
-            $('.scrolling .outline_upper').droppable({
+            $('.putLego .outline_upper').droppable({
                 accept: ".upper_body",
                 drop: function (e, ui) {
                     ui.draggable.position({
@@ -85,13 +98,13 @@ $(function () {
                             $(this).animate(pos, 200, 'linear');
                         }
                     })
-                    $('.scrolling .complete').fadeIn();
+                    $('.putLego .complete').fadeIn();
                     setTimeout(() => {
-                        $('.scrolling .complete').fadeOut();
+                        $('.putLego .complete').fadeOut();
                     }, 1000);
                 },
             });
-            $('.scrolling .outline_lower').droppable({
+            $('.putLego .outline_lower').droppable({
                 accept: ".lower_body",
                 drop: function (e, ui) {
                     ui.draggable.position({
@@ -102,9 +115,9 @@ $(function () {
                             $(this).animate(pos, 200, 'linear');
                         }
                     })
-                    $('.scrolling .complete').fadeIn();
+                    $('.putLego .complete').fadeIn();
                     setTimeout(() => {
-                        $('.scrolling .complete').fadeOut();
+                        $('.putLego .complete').fadeOut();
                     }, 1000);
                 },
             });
@@ -238,9 +251,8 @@ $(function () {
 
     //레고 스크롤 이벤트
     const homeOT = $('.home').offset().top,
-        scrollingOT = $('.scrolling').offset().top,
+        putLegoOT = $('.putLego').offset().top,
         introOT = $('.intro').offset().top,
-        cloth_changeOT = $('.cloth_change').offset().top,
         pick_countryOT = $('.pick_country').offset().top;
 
     $(window).scroll(function () {
@@ -256,9 +268,6 @@ $(function () {
                 if (this.wT > introOT - 200) {
                     this.introduce();
                 };
-                if (this.wT > cloth_changeOT - 200) {
-                    this.clothArea();
-                };
                 if (this.wT > pick_countryOT - 200) {
                     this.map();
                     this.footer();
@@ -268,13 +277,13 @@ $(function () {
                 };
             },
             putTogether: function () {
-                if (this.wT < scrollingOT - 501) {
-                    $('.scrolling p:not(:last-child)').css({ 'opacity': '0', 'transform': 'translateX(-200px)' });
-                    $('.scrolling h2').css({ 'opacity': '0', 'transform': 'translateY(-100px)' });
-                } else if (this.wT > $('.scrolling').offset().top - 500) {
-                    $('.scrolling h2').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
+                if (this.wT < putLegoOT - 501) {
+                    $('.putLego p:not(:last-child)').css({ 'opacity': '0', 'transform': 'translateX(-200px)' });
+                    $('.putLego h2').css({ 'opacity': '0', 'transform': 'translateY(-100px)' });
+                } else if (this.wT > $('.putLego').offset().top - 500) {
+                    $('.putLego h2').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
                     setTimeout(() => {
-                        $('.scrolling p:not(:last-child)').css({ 'opacity': '1', 'transform': 'translateX(0px)' });
+                        $('.putLego p:not(:last-child)').css({ 'opacity': '1', 'transform': 'translateX(0px)' });
                     }, 500);
                 };
 
@@ -286,19 +295,6 @@ $(function () {
                     $('.intro .contents_wrap').find('img').css({ 'opacity': '1', 'transform': 'translateX(0px)' });
                     $('.intro .contents_wrap').find('p').css({ 'opacity': '1', 'transform': 'translateX(0px)' });
                 }, 1000);
-            },
-            clothArea: function () {
-                $('.cloth_change h2').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
-                setTimeout(() => {
-                    $('.cloth_color_wrap > svg').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
-                    $('.cloth_color_wrap .click').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
-                }, 300)
-                setTimeout(() => {
-                    $('.cloth_color_wrap > .color_zone').css({ 'opacity': '1', 'transform': 'translateY(0px)' });
-                }, 600)
-                setTimeout(() => {
-                    $('.advice_memo').addClass('memo');
-                }, 1200)
             },
             map: function () {
                 if (this.wT < pick_countryOT - 101) {

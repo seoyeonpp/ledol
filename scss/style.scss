@@ -144,7 +144,7 @@ $green : #028640;
                     }
                 }
             }
-            &.scrolling{
+            &.putLego{
                 background: url(../image/bg.png) 40% 50% repeat fixed;
                 background-size: cover;
                 background-attachment: fixed;
@@ -214,6 +214,57 @@ $green : #028640;
                     text-align: center;
                     @include font("Tourney",48px,$red);
                     display: none;
+                }
+                #lego_cloth{
+                    width: 365px;
+                    position: absolute;
+                    left: 770px;
+                    top: 340px;
+                    z-index: 10;
+                    display: none;
+                    #head{
+                        cursor: pointer;
+                    }
+                    #upperbody{
+                        cursor: pointer;
+                    }
+                    #lowerbody{
+                        cursor: pointer;
+                    }
+                }
+                .advice_memo{
+                    position: relative;
+                    top: -50px;
+                    left: 65%;
+                    z-index: 10;
+                    transform: translateX(700px);
+                    &.memo{
+                        animation: memoAni 1s 1 cubic-bezier(.03,.95,.04,1.01) forwards;
+                    }
+                    img{
+                        width: 360px;
+                    }
+                    .memo_text{
+                        position: absolute;
+                        top: 120px;
+                        left: 60px;
+                        h4{
+                            @include font('UhBeemysen',36px,$black);
+                        }
+                        p{
+                            @include font('UhBeemysen',24px,$black);
+                        }
+
+                    }
+                }
+                .color_zone{
+                    opacity: 0;
+                    transform: translateY(100px);
+                    transition: all 1s;
+                    position: absolute;
+                    top: 460px;
+                    left: 380px;
+                    z-index: 10;
                 }
             }
             &.intro{
@@ -310,88 +361,6 @@ $green : #028640;
                         }
                     }
 
-                }
-            }
-            &.cloth_change{
-                position: relative;
-                z-index: 1;
-                background-attachment: fixed;
-                &::after{
-                    background: url(../image/bg_stripe.png);
-                    background-size: 100%;
-                    top: 0;
-                    left: 0;
-                    position: absolute;
-                    opacity: 0.4;
-                    filter: opacity(0.4);
-                    z-index: -1;
-                    content: '';
-                    width: 100%;
-                    height: 100%;
-                }
-                .advice_memo{
-                    position: relative;
-                    top: -680px;
-                    left: 70%;
-                    transform: translateX(700px);
-                    &.memo{
-                        animation: memoAni 1s 1 cubic-bezier(.03,.95,.04,1.01) forwards;
-                    }
-                    img{
-                        width: 360px;
-                    }
-                    .memo_text{
-                        position: absolute;
-                        top: 120px;
-                        left: 60px;
-                        h4{
-                            @include font('UhBeemysen',36px,$black);
-                        }
-                        p{
-                            @include font('UhBeemysen',24px,$black);
-                        }
-
-                    }
-                }
-                .cloth_color_wrap{
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    margin-top: 160px;
-                    gap: 20px;
-                    .click{
-                        display: flex;
-                        flex-direction: column;
-                        opacity: 0;
-                        transform: translateY(100px);
-                        transition: all 1s;
-                        span{
-                            display: block;
-                            @include font('GmarketSansBold',16px,$black);
-                            margin: 60px 10px;
-                            animation: clickAni 0.5s infinite alternate ease-in;
-                        }
-                    }
-                    #lego_cloth{
-                        opacity: 0;
-                        transform: translateY(100px);
-                        transition: all 1s;
-                        #head{
-                            cursor: pointer;
-                        }
-                        #upperbody{
-                            cursor: pointer;
-                        }
-                        #lowerbody{
-                            cursor: pointer;
-                        }
-                    }
-                    .color_zone{
-                        opacity: 0;
-                        transform: translateY(100px);
-                        transition: all 1s;
-                        margin-left: 70px;
-                    }
                 }
             }
             &.pick_country{

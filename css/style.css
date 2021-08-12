@@ -283,14 +283,14 @@ a {
           animation-timing-function: linear;
 }
 
-#wrap main section.scrolling {
+#wrap main section.putLego {
   background: url(../image/bg.png) 40% 50% repeat fixed;
   background-size: cover;
   background-attachment: fixed;
   position: relative;
 }
 
-#wrap main section.scrolling:after {
+#wrap main section.putLego:after {
   content: '';
   background: rgba(248, 248, 248, 0.5);
   border-radius: 20px;
@@ -304,14 +304,14 @@ a {
   z-index: 1;
 }
 
-#wrap main section.scrolling > img {
+#wrap main section.putLego > img {
   position: absolute;
   z-index: 5;
   top: 430px;
   left: 20%;
 }
 
-#wrap main section.scrolling .outline {
+#wrap main section.putLego .outline {
   position: absolute;
   z-index: 4;
   left: 50%;
@@ -320,25 +320,25 @@ a {
           transform: translateX(-50%);
 }
 
-#wrap main section.scrolling .outline img {
+#wrap main section.putLego .outline img {
   display: block;
 }
 
-#wrap main section.scrolling .outline img.outline_head {
+#wrap main section.putLego .outline img.outline_head {
   margin-left: 110px;
   margin-top: 0px;
 }
 
-#wrap main section.scrolling .outline img.outline_upper {
+#wrap main section.putLego .outline img.outline_upper {
   margin-top: -4px;
 }
 
-#wrap main section.scrolling .outline img.outline_lower {
+#wrap main section.putLego .outline img.outline_lower {
   margin-left: 74px;
   margin-top: -74px;
 }
 
-#wrap main section.scrolling p.explain {
+#wrap main section.putLego p.explain {
   position: absolute;
   z-index: 5;
   background: url(../image/tape.png) no-repeat 50% 50%;
@@ -359,7 +359,7 @@ a {
   transition: all 2s;
 }
 
-#wrap main section.scrolling p.complete {
+#wrap main section.putLego p.complete {
   position: absolute;
   z-index: 5;
   top: 240px;
@@ -371,6 +371,75 @@ a {
   font-size: 48px;
   color: #E2000D;
   display: none;
+}
+
+#wrap main section.putLego #lego_cloth {
+  width: 365px;
+  position: absolute;
+  left: 770px;
+  top: 340px;
+  z-index: 10;
+  display: none;
+}
+
+#wrap main section.putLego #lego_cloth #head {
+  cursor: pointer;
+}
+
+#wrap main section.putLego #lego_cloth #upperbody {
+  cursor: pointer;
+}
+
+#wrap main section.putLego #lego_cloth #lowerbody {
+  cursor: pointer;
+}
+
+#wrap main section.putLego .advice_memo {
+  position: relative;
+  top: -50px;
+  left: 65%;
+  z-index: 10;
+  -webkit-transform: translateX(700px);
+          transform: translateX(700px);
+}
+
+#wrap main section.putLego .advice_memo.memo {
+  -webkit-animation: memoAni 1s 1 cubic-bezier(0.03, 0.95, 0.04, 1.01) forwards;
+          animation: memoAni 1s 1 cubic-bezier(0.03, 0.95, 0.04, 1.01) forwards;
+}
+
+#wrap main section.putLego .advice_memo img {
+  width: 360px;
+}
+
+#wrap main section.putLego .advice_memo .memo_text {
+  position: absolute;
+  top: 120px;
+  left: 60px;
+}
+
+#wrap main section.putLego .advice_memo .memo_text h4 {
+  font-family: "UhBeemysen";
+  font-size: 36px;
+  color: #333333;
+}
+
+#wrap main section.putLego .advice_memo .memo_text p {
+  font-family: "UhBeemysen";
+  font-size: 24px;
+  color: #333333;
+}
+
+#wrap main section.putLego .color_zone {
+  opacity: 0;
+  -webkit-transform: translateY(100px);
+          transform: translateY(100px);
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  position: absolute;
+  top: 460px;
+  left: 380px;
+  z-index: 10;
 }
 
 #wrap main section.intro {
@@ -507,130 +576,6 @@ a {
 
 #wrap main section.intro .contents_wrap .dim_layer .pop_up button:hover {
   background: #FFCF00;
-}
-
-#wrap main section.cloth_change {
-  position: relative;
-  z-index: 1;
-  background-attachment: fixed;
-}
-
-#wrap main section.cloth_change::after {
-  background: url(../image/bg_stripe.png);
-  background-size: 100%;
-  top: 0;
-  left: 0;
-  position: absolute;
-  opacity: 0.4;
-  -webkit-filter: opacity(0.4);
-          filter: opacity(0.4);
-  z-index: -1;
-  content: '';
-  width: 100%;
-  height: 100%;
-}
-
-#wrap main section.cloth_change .advice_memo {
-  position: relative;
-  top: -680px;
-  left: 70%;
-  -webkit-transform: translateX(700px);
-          transform: translateX(700px);
-}
-
-#wrap main section.cloth_change .advice_memo.memo {
-  -webkit-animation: memoAni 1s 1 cubic-bezier(0.03, 0.95, 0.04, 1.01) forwards;
-          animation: memoAni 1s 1 cubic-bezier(0.03, 0.95, 0.04, 1.01) forwards;
-}
-
-#wrap main section.cloth_change .advice_memo img {
-  width: 360px;
-}
-
-#wrap main section.cloth_change .advice_memo .memo_text {
-  position: absolute;
-  top: 120px;
-  left: 60px;
-}
-
-#wrap main section.cloth_change .advice_memo .memo_text h4 {
-  font-family: "UhBeemysen";
-  font-size: 36px;
-  color: #333333;
-}
-
-#wrap main section.cloth_change .advice_memo .memo_text p {
-  font-family: "UhBeemysen";
-  font-size: 24px;
-  color: #333333;
-}
-
-#wrap main section.cloth_change .cloth_color_wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-top: 160px;
-  gap: 20px;
-}
-
-#wrap main section.cloth_change .cloth_color_wrap .click {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  opacity: 0;
-  -webkit-transform: translateY(100px);
-          transform: translateY(100px);
-  -webkit-transition: all 1s;
-  transition: all 1s;
-}
-
-#wrap main section.cloth_change .cloth_color_wrap .click span {
-  display: block;
-  font-family: "GmarketSansBold";
-  font-size: 16px;
-  color: #333333;
-  margin: 60px 10px;
-  -webkit-animation: clickAni 0.5s infinite alternate ease-in;
-          animation: clickAni 0.5s infinite alternate ease-in;
-}
-
-#wrap main section.cloth_change .cloth_color_wrap #lego_cloth {
-  opacity: 0;
-  -webkit-transform: translateY(100px);
-          transform: translateY(100px);
-  -webkit-transition: all 1s;
-  transition: all 1s;
-}
-
-#wrap main section.cloth_change .cloth_color_wrap #lego_cloth #head {
-  cursor: pointer;
-}
-
-#wrap main section.cloth_change .cloth_color_wrap #lego_cloth #upperbody {
-  cursor: pointer;
-}
-
-#wrap main section.cloth_change .cloth_color_wrap #lego_cloth #lowerbody {
-  cursor: pointer;
-}
-
-#wrap main section.cloth_change .cloth_color_wrap .color_zone {
-  opacity: 0;
-  -webkit-transform: translateY(100px);
-          transform: translateY(100px);
-  -webkit-transition: all 1s;
-  transition: all 1s;
-  margin-left: 70px;
 }
 
 #wrap main section.pick_country {

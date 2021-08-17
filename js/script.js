@@ -72,8 +72,8 @@ $(function () {
                     }, 1000);
                     //마지막으로 머리 조립 후, 컬러 픽커로 수정할 svg 이미지로 전환
                     setTimeout(()=>{
-                        $('.putLego .head, .putLego .upper_body, .putLego .lower_body, .outline').fadeOut();
-                        $('#lego_cloth').fadeIn();
+                        $('.putLego .head, .putLego .upper_body, .putLego .lower_body, .outline').css({"display":"none"});
+                        $('#lego_cloth').css({"display":"block"});
                         lego.colorChange();
                         $('.color_zone').css({
                             'opacity': '1',

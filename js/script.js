@@ -72,7 +72,7 @@ $(function () {
                     }, 1000);
                     //마지막으로 머리 조립 후, 컬러 픽커로 수정할 svg 이미지로 전환
                     setTimeout(()=>{
-                        $('.putLego .head, .putLego .upper_body, .putLego .lower_body').fadeOut();
+                        $('.putLego .head, .putLego .upper_body, .putLego .lower_body, .outline').fadeOut();
                         $('#lego_cloth').fadeIn();
                         lego.colorChange();
                         $('.color_zone').css({
@@ -84,7 +84,7 @@ $(function () {
                         $('.putLego .explain').text('레돌이를 클릭해 색을 바꿔주세요!');
                         $('.advice_memo').addClass('memo');
 
-                    },1200);
+                    },1100);
                 },
             });
             $('.putLego .outline_upper').droppable({
